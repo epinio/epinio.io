@@ -1,8 +1,0 @@
----
-topTitle: From App to URL in one step
-content: >
-  ## Epinio
-
-  Epinio is an opinionated platform that runs on Kubernetes, that takes you from App to URL in one step. 
-
-image: images/kubernetes.png
