@@ -1,6 +1,6 @@
 baseURL = "https://epinio.github.io/epinio.io/"
 languageCode = "en-us"
-theme = "docsy-hugo"
+theme = "portio-hugo"
 title = "epinio"
 disableKinds = ["section", "taxonomy", "taxonomyTerm", "RSS", "sitemap", "robotsTXT", "404"]
 
