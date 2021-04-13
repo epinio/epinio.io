@@ -9,8 +9,9 @@ service:
   - content: >
       #### Kubernetes from the ground up
 
-      Epinio is designed on top and with Kubernetes
+      Epinio is designed on top of and with Kubernetes
       from the ground up.
+      It uses many off-the-shelve open source components.
 
     image: images/annotations.svg
 
@@ -26,7 +27,8 @@ service:
   - content: >
       #### Development to production
 
-      Epinio covers the complete application lifecylce. From your
-      developer workstation to your scaled production cluster.
+      Epinio covers the complete application lifecylce and supports
+      true DevOps.
+      From your developer workstation to your scaled production cluster.
 
     image: images/shared-deps.svg
