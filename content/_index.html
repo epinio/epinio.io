@@ -1,13 +1,13 @@
 ---
-title: "Kubewarden: Dynamic Admission at your fingertips"
+title: "Epinio: From App to URL in a single step"
 date: 2021-04-16T13:28:46+02:00
 ---
 <section class="intro">
   <div class="bg-primary">
     <div class="wrap grid-two">
       <div>
-        <h1>Dynamic Admission at your fingertips</h1>
-        <h4>As flexible and easy as it gets</h4>
+        <h1>An opinionated PaaS</h1>
+        <h4>From App to URL in a single step</h4>
       </div>
       <div>
         <h4>This won't take long…</h4>
@@ -17,79 +17,59 @@ date: 2021-04-16T13:28:46+02:00
   takes maybe 30 seconds
   k3s kubectl get node
   </code></pre>
-        <p>For detailed installation, <a href="https://rancher.com/docs/k3s/latest/en/">refer to the docs</a></p>
+        <p>For detailed installation, <a href="https://github.com/epinio/epinio/docs">refer to the docs</a></p>
       </div>
     </div>
   </div>
 
   <div class="folder">
-    <h4>Why Kubewarden?</h4>
+    <h4>Why Epinio ?</h4>
     <div class="bg-light grid-dynamic text-center">
-      <h5>Edge</h5>
-      <h5>IoT</h5>
-      <h5>CI</h5>
-      <h5>ARM</h5>
+      <h5>Developer happyness</h5>
+      <h5>Single step deployment</h5>
+      <h5>True DevOps</h5>
+      <h5>Lightweight</h5>
     </div>
   </div>
 </section>
 
 <section class="wrap">
-  <h2>Why Use K3s</h2>
+  <h2>Why use Epinio ?</h2>
   <div class="grid-three">
     <div>
       <h5>Perfect for Edge</h5>
-      <p>K3s is a highly available, certified
-        Kubernetes distribution designed
-        for production workloads in
-        unattended, resource-constrained,
-        remote locations or inside
-        IoT appliances.</p>
+      <p>Epinio is designed for resource restricted environments.</p>
     </div>
 
     <div>
       <h5>Simplified &amp; Secure</h5>
-      <p>K3s is packaged as a single
-        &lt;40MB binary that reduces the
-        dependencies and steps needed
-        to install, run and auto-update a
-        production Kubernetes cluster.</p>
+      <p>Epinio builds on Kubernetes using well-established components.</p>
     </div>
 
     <div>
-      <h5>Optimized for ARM</h5>
-      <p>Both ARM64 and ARMv7 are
-        supported with binaries and
-        multiarch images available for
-        both. K3s works great from
-        something as small as a
-        Raspberry Pi to an AWS
-        a1.4xlarge 32GiB server.</p>
+      <h5>Focus on developers</h5>
+      <p>Epinio completely hides all Kubernetes and Container
+      details from you. As a developer you can focus on the
+      code. Epinio takes care of everything else..</p>
     </div>
   </div>
 </section>
 <hr />
-<section class="wrap">
-  <h2>How it Works</h2>
-  <img src="../images/how-it-works-kubewarden.svg" alt="{{ .Site.Title }}" style="padding: 3em; background: #eeeeee; border-radius: 25px;">
-</section>
 
 <section class="get-started">
   <div class="white">
     <h2 class="text-center">Get Started</h2>
     <h5>
-      1. Download K3s - <a href="https://github.com/rancher/k3s/releases/latest">latest release</a>, x86_64, ARMv7, and
-      ARM64 are supported</br>
-      2. Run server
+      1. Download Epinio - <a
+href="https://github.com/epinio/epinio/releases/latest">latest release</a>, x86_64, and ARM64 are supported on Linux, Mac, or Windows</br>
+      2. Install Epinio
     </h5>
     <pre>
 <code>
-sudo k3s server &amp;
-# Kubeconfig is written to /etc/rancher/k3s/k3s.yaml
-sudo k3s kubectl get node
+epinio install
 
-# On a different node run the below. NODE_TOKEN comes from /var/lib/rancher/k3s/server/node-token
-# on your server
-sudo k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
+# ... cd to your application source ...
+epinio push my_app .
 </code>
       </pre>
   </div>
@@ -98,14 +78,10 @@ sudo k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
       <h2>Learn More</h2>
       <div class="grid-two">
         <div>
-          <p>Watch our recorded K3s demo on-demand, and get a copy of our slides here</p>
-          <a href="https://info.rancher.com/meetup-k3s-lightweight-kubernetes" class="btn" target="_blank">Watch
-            Demo</a>
+          <p>See the <a href="https://github.com/epinio/epinio/tree/main/docs">Epinio documentation</a></p>
         </div>
         <div>
-          <p>Join the upcoming Introduction to K3s Online Training
-            Register for Training</p>
-          <a href="https://info.rancher.com/k3s-online-training" target="_blank" class="btn">Register for Training</a>
+          <p>Ask a question, report a bug <a href="https://github.com/epinio/epinio/issues">on github</a></p>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 baseURL = ""
 languageCode = "en-us"
-title = "kubewarden"
+title = "epinio"
 theme = "projects-theme"
 pluralizeListTitles = false
 enableRobotsTXT = true
@@ -23,7 +23,7 @@ vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
 params = ["categories", "tags"]
 
 [params]
-  github = "https://github.com/kubewarden"
+  github = "https://github.com/epinio"
 
 [outputs]
 home = ["HTML", "RSS", "Algolia"]
@@ -37,19 +37,7 @@ home = ["HTML", "RSS", "Algolia"]
 [menu]
 
   [[menu.main]]
-    identifier = "hub"
-    name = "Policy Hub"
-    url = "https://hub.kubewarden.io/"
-    weight = -130
-
-  [[menu.main]]
-    identifier = "charts"
-    name = "Helm Charts"
-    url = "https://charts.kubewarden.io/"
-    weight = -120
-
-  [[menu.main]]
     identifier = "docs"
     name = "Docs"
-    url = "https://docs.kubewarden.io/"
+    url = "https://docs.epinio.io/"
     weight = -110
