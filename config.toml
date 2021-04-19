@@ -1,11 +1,26 @@
-baseURL = "https://epinio.github.io/epinio.io/"
+baseURL = ""
 languageCode = "en-us"
-theme = "portio-hugo"
+theme = "projects-theme"
 title = "epinio"
-disableKinds = ["section", "taxonomy", "taxonomyTerm", "RSS", "sitemap", "robotsTXT", "404"]
+pluralizeListTitles = false
+enableRobotsTXT = true
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+enableGitInfo = true
 
-[[menu.main]]
+[blackfriday]
+fractions = false
+#hrefTargetBlank = true
 
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlaintext = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"]
 
 [params]
 # rename when the logo is updated, so we indirectly also invalidate caches
@@ -14,3 +29,14 @@ githubLink = "https://github.com/epinio/epinio"
 docsLink = "https://docs.epinio.io/"
 css = ["css/custom.css"]
 favicon = "images/favicon.ico"
+  github = "https://github.com/epinio"
+
+
+[outputs]
+  home = ["HTML", "RSS", "Algolia"]
+
+[privacy]
+  [privacy.twitter]
+    disable = false
+    enableDNT = false
+    simple = true
