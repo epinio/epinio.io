@@ -29,8 +29,7 @@ githubLink = "https://github.com/epinio/epinio"
 docsLink = "https://docs.epinio.io/"
 css = ["css/custom.css"]
 favicon = "images/favicon.ico"
-  github = "https://github.com/epinio"
-
+  github = "https://github.com/epinio/epinio"
 
 [outputs]
   home = ["HTML", "RSS", "Algolia"]
@@ -40,3 +39,12 @@ favicon = "images/favicon.ico"
     disable = false
     enableDNT = false
     simple = true
+
+[menu]
+
+  [[menu.main]]
+    identifier = "docs"
+    name = "Documentation"
+    url = "https://github.com/epinio/epinio/docs/install.md"
+    weight = -110
+    
