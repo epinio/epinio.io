@@ -8,23 +8,8 @@ description: "From App to URL in one step"
       <div class="wrap grid-two">
         <div>
           <h1>From App to URL in one step</h1>
-          <h3>About</h3>
-          <div class="folder bg-light text-center">
-          <h4>Epinio is an opinionated platform that runs on Kubernetes and takes you from App to URL in one step.</h4>
-          </div>
-          <h3>Principles</h3>
           <div>
-          <h4>must fit in less than 4GB of RAM</h4>
-          <h4>must install in less than 5 minutes when images are warm</h4>
-          <h4>must install with a one-line command and zero config</h4>
-          <h4>must completely uninstall and leave the cluster in its previous state with a one-line command</h4>
-          <h4>must work on local clusters (edge friendly)</h4>
-          </div>
-          <h4>Guidelines</h4>
-          <div>
-          <h5>if possible, choose components that are written in go</h5>
-          <h5>all acceptance tests should run in less than 10 minutes</h5>
-          <h5>all tests should be able to run on the minimal cluster</h5>
+            <h4>Epinio is an opinionated platform that runs on Kubernetes and takes you from App to URL in one step.</h4>
           </div>
           <a href="https://github.com/epinio/epinio/blob/main/docs/install.md" class="btn" target="_blank" rel="noopener">Learn More</a>
         </div>
@@ -38,6 +23,7 @@ description: "From App to URL in one step"
     <div class="folder">
       <h4>Great For</h4>
       <div class="bg-light grid-dynamic text-center">
+        <h5>No-fuzz deployments</h5>
         <h5>Application developers</h5>
         <h5>Edge clusters</h5>
         <h5>True DevOps</h5>
@@ -46,74 +32,50 @@ description: "From App to URL in one step"
   </section>
 
 <section class="wrap">
-  <h2>Why Use Epinio</h2>
-  <div class="grid-three">
+  <h2>Why Use Epinio ?</h2>
+  <div class="grid-four">
     <div>
     <h5>Built for DevOps</h5>
-    <p>Epinio installs into any Kubernetes cluster and sheds the
-developer from any Kubernetes internals.</p>
+    <p>Epinio installs into any Kubernetes cluster and brings your
+application from source code to deployment.</p>
     </div>
-
     <div>
-    <h5>Streamline your release pipeline</h5>
-    <p>Rio helps you deliver the best possible
-    application release experience to your
-    users.</p>
-    <p>Tell Rio to automatically build and
-      deploy new app releases when you
-      commit changes to your repo.</p>
-    <p>When rolling out new versions of
-      your app, Rio understands the
-      current load and scales up for
-      maximum performance using Layer 4
-      and Layer 7 metrics from
-      Prometheus.</p>
+    <h5>Developer happyness</h5>
+    <p>Focus on your application instead of Container or Kubernetes
+details.</p>
     </div>
-
     <div>
-      <h5>Maximum security by default</h5>
-      <p>When using Rio, your apps launch with
-      the most secure network configuration
-      possible.</p>
-      <p>Workloads receive a DNS record and
-        a wildcard certificate from
-        LetsEncrypt.</p>
-      <p>Built for multitenancy, Rio also
-        integrates with Kubernetes RBAC for
-        maximum security.</p>
-      <p>Your apps will automatically include
-        resource constraints for optimal
-        cluster performance.</p>
+    <h5>Fast &amp; lightweight</h5>
+    <p>Epinio runs well on your local development machine with k3s
+or minikube.</p>
     </div>
-    
+    <div>
+    <h5>Opinionated</h5>
+    <p>Epinio uses Kubernetes generics and open-source components and
+does one thing well.</p>
+    </div>
   </div>
 </section>
+
 <hr/>
-<section class="wrap">
-  <h2>How it Works</h2>
-  <p>Rio is a lightweight, cloud-native platform that delivers a fully integrated deployment experience from operations to pipeline without
-    taking over the cluster. Easily installed using Rancher’s App Catalog, Rio also runs from the CLI on any Kubernetes cluster
-    anywhere, even on your laptop.</p>
-  <img src="../images/how-it-works-rio.svg" alt="{{ .Site.Title }}">
-</section>
 
 <section class="get-started">
   <div class="white text-center">
     <h2>Get Started</h2>
     <div class="grid-three">
-      <h4>Step 1.<br/>Deploy Rio into a Kubernetes cluster</h4>
-      <h4>Step 2.<br/>Define a service</h4>
-      <h4>Step 3.<br/>Scale and promote a new version</h4>
+      <h4>Step 1.<br/><tt>epinio install</tt> into a Kubernetes cluster</h4>
+      <h4>Step 2.<br/><tt>cd</tt> to your application source</h4>
+      <h4>Step 3.<br/><tt>epinio push my-app</tt></h4>
     </div>
-    <p>That’s it! With just a few commands, you'll be up and running with Istio and a simple set of instructions that deliver powerful results for app deployment.</p>
-    <a href="https://github.com/rancher/rio#quick-start" target="blank" class="btn">Install Rio</a> 
+    <p>That’s it! With just a few commands, your application be up and
+running in Kubernetes.</p>
   </div>
   <div class="bg-primary">
     <div class="wrap">
         <h2>Learn More</h2>
         <p class="text-center">Do you want to spend more time creating apps and less time managing the platform?</p>
         <div class="text-center">
-          <a href="https://info.rancher.com/introducing-rio" target="blank" class="btn">Watch the Meetup</a>
+          <a href="https://epinio.github.com/docs/install.md" target="blank" class="btn">Install Epinio today</a>
         </div>
     </div>
   </div>
