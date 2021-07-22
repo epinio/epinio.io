@@ -45,6 +45,5 @@ favicon = "images/favicon.ico"
   [[menu.main]]
     identifier = "docs"
     name = "Documentation"
-    url = "https://github.com/epinio/epinio/blob/main/docs/install.md"
+    url = "https://github.com/epinio/epinio/blob/main/docs/user/tutorials/quickstart.md"
     weight = -110
-    
