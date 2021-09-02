@@ -1,7 +1,7 @@
 baseURL = ""
 languageCode = "en-us"
 theme = "projects-theme"
-title = "epinio"
+title = "Epinio"
 pluralizeListTitles = false
 enableRobotsTXT = true
 pygmentsCodeFences = true
