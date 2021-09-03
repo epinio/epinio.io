@@ -43,7 +43,13 @@ favicon = "images/favicon.ico"
 [menu]
 
   [[menu.main]]
+    identifier = "slack"
+    name = "Slack"
+    url = "https://rancher-users.slack.com/?redir=%2Fmessages%2Fepinio"
+    weight = -110
+
+  [[menu.main]]
     identifier = "docs"
     name = "Documentation"
     url = "https://github.com/epinio/epinio/blob/main/docs/user/tutorials/quickstart.md"
-    weight = -110
+    weight = -90
