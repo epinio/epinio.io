@@ -10,7 +10,7 @@ Epinio is meant to take you from App to URL in one step. It does that by either 
 
 Epinio comes with a pretty sophisticated installer, that knows how to install the Epinio API server in Kubernetes and setup all the dependencies.
 
-{{<figure src="epinio-dependencies.svg" alt="Epinio dependencies diagram" width="66%">}}
+{{<figure src="../epinio-dependencies.svg" alt="Epinio dependencies diagram" width="66%">}}
 
 [Installing with the CLI installer](https://docs.epinio.io/installation/installation.html), can be as easy as running `epinio install`.
 
@@ -30,7 +30,7 @@ Note: Just like the Epinio installer, the chart does not support upgrades, yet. 
 
 The chart's repository can be added to Rancher's marketplace. This needs to be done for each cluster separately.
 
-![add epinio helm repo to rancher](epinio-rancher-repository.png)
+![add epinio helm repo to rancher](../epinio-rancher-repository.png)
 
 You can then install the Epinio chart from the "Apps & Marketplace/Charts" menu.
 
@@ -58,7 +58,7 @@ helm:
 
 Now we can add the Git repository to Rancher's Continuous Delivery:
 
-![rancher continous delivery](epinio-rancher-cd.png)
+![rancher continous delivery](../epinio-rancher-cd.png)
 
 Rancher will monitor the repository and update the installation, if the manifest changes.
 
