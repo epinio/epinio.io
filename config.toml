@@ -46,6 +46,12 @@ favicon = "images/favicon.ico"
 [menu]
 
   [[menu.main]]
+    identifier = "charts"
+    name = "Helm Charts"
+    url = "https://artifacthub.io/packages/helm/epinio/epinio"
+    weight = -120
+
+  [[menu.main]]
     identifier = "slack"
     name = "Slack"
     url = "https://rancher-users.slack.com/?redir=%2Fmessages%2Fepinio"
