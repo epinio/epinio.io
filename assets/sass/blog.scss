@@ -1,12 +1,5 @@
 @import  "blog-main";
 
-:root {
-    --primary-color   : #c70a41;
-    --secondary-color : #5b0700;
-    --dark            : #0f0f0f;
-    --light           : #ffffff;
-  }
-
 .bg-primary h1, .bg-primary h4 {
     color: var(--light);
 }
