@@ -8,7 +8,7 @@ date: 2021-11-19
 
 The new [Epinio v0.2.0](https://github.com/epinio/epinio/releases) is out and marks our second beta milestone.
 
-This release adds Epinio to the Rancher UI, but a lot more changed in the last nine weeks.
+This release adds Epinio to the Rancher UI's dashboard, but that is not the only big change. A lot more features were added in the last nine weeks.
 
 A future blog post might talk more about the new UI, but in short, once you installed Epinio on your cluster, it shows up automatically in Rancher's web interface. Then you can upload your apps sources and they'll be automatically deployed. More information can be found in the [Epinio UI installation instructions](https://github.com/epinio/ui/blob/beta2/README.md).
 
