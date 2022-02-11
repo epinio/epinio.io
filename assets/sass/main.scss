@@ -5,40 +5,50 @@
     --secondary-color : #373B6B;
     --dark            : #33313B;
     --light           : #F3F3F3;
+}
+
+.navbar-brand {
+  flex: 1;
+}
+
+.sub-header span {
+  padding: 0.5rem;
+}
+
+.cncf {
+  .cncf-logo {
+    display: block;
+    width: 300px;
+    margin: auto;
+    padding-bottom: 2rem;
   }
 
-  .navbar-brand {
+  p {
+    font-size: 22px;
+  }
+}
+
+footer .wrap {
+  display: flex;
+
+  > div:first-child {
     flex: 1;
   }
+}
 
-  .sub-header span {
-    padding: 0.5rem;
-  }
+section.wrap h3 {
+  font-weight: 500;
+}
 
-  .cncf {
-    .cncf-logo {
-      display: block;
-      width: 300px;
-      margin: auto;
-      padding-bottom: 2rem;
-    }
+section.wrap p {
+  font-size: 2.1rem;
+  line-height: 2.8rem;
+}
 
-    p {
-      font-size: 22px;
-    }
-  }
 
-  footer .wrap {
-    display: flex;
-
-    > div:first-child {
-      flex: 1;
-    }
-  }
-
-  footer .project-icons a img {
-    filter: saturate(10%)invert(100%)brightness(10)grayscale(1);
-    margin: 0 0 0 10px;
-    border-radius: 3px;
-    transition: ease-in-out all .25s;
-  }
+footer .project-icons a img {
+  filter: saturate(10%)invert(100%)brightness(10)grayscale(1);
+  margin: 0 0 0 10px;
+  border-radius: 3px;
+  transition: ease-in-out all .25s;
+}
