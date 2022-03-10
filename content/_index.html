@@ -33,10 +33,10 @@ pagewidth: 12
     </div>
 
     <div class="row">
-      <div class="col-lg-10 mx-auto instructions">
+      <div class="col-lg-11 mx-auto instructions">
         <h2 class="text-center">Install Epinio in under 5 minutes</h2>
 
-        <p>Download the <a href="https://github.com/epinio/epinio/releases/">latest cli client</a></p>
+        <p>Download the <a href="https://github.com/epinio/epinio/releases/">latest cli client</a> into your PATH</p>
 
         <p>Install cert-manger if not already present</p>
         <pre>kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cert-manager.yaml</pre>
@@ -44,8 +44,8 @@ pagewidth: 12
         <p>Add the repo to helm</p>
         <pre>helm repo add epinio https://epinio.github.io/helm-charts</pre>
 
-        <p>Install the platform</p>
-        <pre>helm upgrade --install epinio epinio/epinio -n epinio --create-namespace --set global.domain=<INGRESS_IP>.sslip.io</pre>
+        <p>Install the platform using helm</p>
+        <pre>helm upgrade --install epinio epinio/epinio -n epinio --create-namespace --set global.domain=&LT;INGRESS_IP&GT;.sslip.io</pre>
 
         <p>Pull setting from the cluster</p>
         <pre>epinio settings update</pre>
@@ -106,9 +106,9 @@ pagewidth: 12
           <img src="../images/how-it-works-epinio.svg" alt="{{ .Site.Title }}" class="img-fluid shadow-xl border-radius-lg max-height-500">
         </div>
       </div>
-      <div class="col-md-6">
-        <p class="text-center font-weight-light">The Epinio API server uses build packs to create container images from source code.</p>
-        <p class="text-center font-weight-light">A single `epinio push` creates an image and deploys the application. Once Epinio has been installed no further Kubernetes knowledge is needed to start applications.</p>
+      <div class="col-md-12">
+        <p class="text-left font-weight-light">The Epinio API server uses build packs to create container images from source code.</p>
+        <p class="text-left font-weight-light">A single `epinio push` builds an image and deploys the application. Once Epinio has been installed no further Kubernetes knowledge is needed to develop and deploy applications.</p>
       </div>
     </div>
   </div>

@@ -7,3 +7,21 @@
   max-height: .8125rem;
   padding-right: 10px;
 }
+
+.instructions p:before {
+  content: counter(instruction) ". ";
+}
+
+.instructions p {
+  font-weight: bolder;
+  counter-increment: instruction;
+}
+.instructions pre {
+  margin-left: 24px;
+  padding-left: 8px;
+  background-color: rgba(128,128,128,.1);
+}
+
+.instructions pre:before {
+  content: "$ "
+}
