@@ -14,9 +14,6 @@ fractions = false
 #hrefTargetBlank = true
 
 
-[params]
-  custom_css = ["custom.css"]
-  version = "1.1.1"
 
 [outputFormats.Algolia]
 baseName = "algolia"
@@ -37,6 +34,9 @@ css = ["css/custom.css"]
 favicon = "images/favicon.ico"
   github = "https://github.com/epinio/epinio"
 
+  custom_css = ["custom.css"]
+  version = "1.1.1"
+  
 [outputs]
   home = ["HTML", "RSS", "Algolia"]
 
