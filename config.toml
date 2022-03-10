@@ -15,17 +15,6 @@ fractions = false
 #hrefTargetBlank = true
 
 
-
-[outputFormats.Algolia]
-baseName = "algolia"
-isPlaintext = true
-mediaType = "application/json"
-notAlternative = true
-
-[params.algolia]
-vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
-params = ["categories", "tags"]
-
 [params]
 # rename when the logo is updated, so we indirectly also invalidate caches
 logo = "images/epinio-logo-header.png"
@@ -39,7 +28,7 @@ favicon = "images/favicon.ico"
   version = "1.1.1"
   
 [outputs]
-  home = ["HTML", "RSS", "Algolia"]
+  home = ["HTML", "RSS"]
 
 [privacy]
   [privacy.googleAnalytics]
