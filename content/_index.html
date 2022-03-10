@@ -1,6 +1,6 @@
 ---
 title: "The Application Development Engine for Kubernetes"
-subtitle: "Tame your developer workflow to go from Code to URL in a single step."
+subtitle: "Tame your developer workflow to go from Code to URL in one step."
 description: "Epinio installs into any Kubernetes cluster to bring your application from source code to deployment and allow for Developers and Operators to work better together!"
 class: "landing-page"
 pagewidth: 12
@@ -33,52 +33,37 @@ pagewidth: 12
     </div>
 
     <div class="row">
-      <div class="col-lg-6 mx-auto text-center">
-        <h2>Install Epinio in 5 minutes</h2>
-        <p class="lead">You can learn more in the <a href="https://docs.epinio.io/installation/installation.html">installation instructions</a>.</p>
+      <div class="col-lg-10 mx-auto instructions">
+        <h2 class="text-center">Install Epinio in under 5 minutes</h2>
+
+        <p>Download the <a href="https://github.com/epinio/epinio/releases/">latest cli client</a></p>
+
+        <p>Install cert-manger if not already present</p>
+        <pre>kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cert-manager.yaml</pre>
+
+        <p>Add the repo to helm</p>
+        <pre>helm repo add epinio https://epinio.github.io/helm-charts</pre>
+
+        <p>Install the platform</p>
+        <pre>helm upgrade --install epinio epinio/epinio -n epinio --create-namespace --set global.domain=<INGRESS_IP>.sslip.io</pre>
+
+        <p>Pull setting from the cluster</p>
+        <pre>epinio settings update</pre>
+
+        <p>Learn more in the <a href="https://docs.epinio.io/installation/installation.html">installation instructions</a>.</p>
       </div>
     </div>
-
-    <!-- -------- start install -------- -->
-    <section class="get-started">
-      <div class="white text-center">
-        <h2>Get Started</h2>
-        <div class="grid-three">
-          <h4>Step 1.<br/><tt>Install Epinio</tt> into a Kubernetes cluster</h4>
-          <h4>Step 2.<br/><tt>cd</tt> to your application source</h4>
-          <h4>Step 3.<br/><tt>epinio push my-app</tt></h4>
-        </div>
-        <p>That’s it! With just a few commands, your application can be built and running in Kubernetes.</p>
-      </div>
-      <div class="bg-primary">
-        <div class="wrap">
-            <h2>Learn More</h2>
-            <p class="text-center">Do you want to spend more time creating apps and less time managing the platform?</p>
-            <div class="text-center">
-              <a href="https://docs.epinio.io/installation/installation.html" target="blank" class="btn">Install Epinio today</a>
-            </div>
-        </div>
-      </div>
-    </section>
-    
   </div>
 </section>
 <!-- -------- END Features w/ title and 3 infos -------- -->
 
-<section class="">
-  <h2>How it Works</h2>
-  <img src="../images/how-it-works-epinio.svg" alt="{{ .Site.Title }}" style="padding: 3em 20em; background: #eeeeee; border-radius: 25px;">
 
-  <p class="text-left font-weight-light">The Epinio API server uses build packs to create container images from source code.</p>
-  <p class="text-left font-weight-light">A single `epinio push` creates an image and deploys the application. Once Epinio has been installed no further Kubernetes knowledge is needed to start applications.</p>
-
-</section>
 
 <section class="">
   <div class="container py-5">
     <div class="row align-items-center">
       <div class="col-md-6 mb-md-0 mb-4">
-        <h3>Push Source</h3>
+        <h3>Push from Source</h3>
         <p class="lead mb-md-5 mb-4">
           Push your code directly to the platform without needing to build complicated CD pipelines or writing any yaml.
         </p>
@@ -95,21 +80,39 @@ pagewidth: 12
 <section class="">
   <div class="container py-5">
     <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="blur-shadow-image text-center">
+          <img src="/images/debugging.gif" alt="VS Code remote debugging" class="img-fluid shadow-xl border-radius-lg max-height-500">
+        </div>
+      </div>
       <div class="col-md-6 mb-md-0 mb-4">
         <h3>Debugging tools</h3>
         <p class="lead mb-md-5 mb-4">
           Dig into what your application is doing with your favorite debugger or IDE.
         </p>
       </div>
-      <div class="col-md-6">
-        <div class="blur-shadow-image text-center">
-          <img src="/images/debugging.gif" alt="VS Code remote debugging" class="img-fluid shadow-xl border-radius-lg max-height-500">
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
+<section class="">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-12">
+        <h3>How it Works</h3>
+      </div>
+      <div class="col-md-12">
+        <div class="blur-shadow-image text-center">
+          <img src="../images/how-it-works-epinio.svg" alt="{{ .Site.Title }}" class="img-fluid shadow-xl border-radius-lg max-height-500">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <p class="text-center font-weight-light">The Epinio API server uses build packs to create container images from source code.</p>
+        <p class="text-center font-weight-light">A single `epinio push` creates an image and deploys the application. Once Epinio has been installed no further Kubernetes knowledge is needed to start applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- -------- START CTA -------- -->
 <section class="py-5">
   <div class="container">
