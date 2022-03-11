@@ -8,15 +8,21 @@
   padding-right: 10px;
 }
 
+.instructions h2 {
+  margin-bottom: 32px;
+}
+
 .instructions p:before {
   content: counter(instruction) ". ";
 }
 
 .instructions p {
+  font-size: 20px;
   font-weight: bolder;
   counter-increment: instruction;
 }
 .instructions pre {
+  font-size: 16px;
   margin-left: 24px;
   padding-left: 8px;
   background-color: rgba(128,128,128,.1);
