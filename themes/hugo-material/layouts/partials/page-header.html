@@ -1,0 +1,15 @@
+<div class="page-header header-filter clear-filter light-blue-filter" 
+       data-parallax="true" >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand">
+            <h1>{{ .Title }}</h1>
+            <h3>{{ .Params.subtitle }}</h3>
+            
+            {{ with .Params.description }} {{ . }}{{ end }}  
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

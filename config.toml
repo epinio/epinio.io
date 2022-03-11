@@ -1,6 +1,6 @@
 baseURL = ""
 languageCode = "en-us"
-theme = "projects-theme"
+theme = "hugo-material"
 title = "Epinio"
 pluralizeListTitles = false
 enableRobotsTXT = true
@@ -8,20 +8,12 @@ pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 enableGitInfo = true
 googleAnalytics = 'UA-56382716-12'
+disableKinds = ["section", "taxonomy", "taxonomyTerm", "RSS", "sitemap", "robotsTXT", "404"]
 
 [blackfriday]
 fractions = false
 #hrefTargetBlank = true
 
-[outputFormats.Algolia]
-baseName = "algolia"
-isPlaintext = true
-mediaType = "application/json"
-notAlternative = true
-
-[params.algolia]
-vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
-params = ["categories", "tags"]
 
 [params]
 # rename when the logo is updated, so we indirectly also invalidate caches
@@ -32,8 +24,11 @@ css = ["css/custom.css"]
 favicon = "images/favicon.ico"
   github = "https://github.com/epinio/epinio"
 
+  custom_css = ["custom.css"]
+  version = "1.1.1"
+  
 [outputs]
-  home = ["HTML", "RSS", "Algolia"]
+  home = ["HTML", "RSS"]
 
 [privacy]
   [privacy.googleAnalytics]
@@ -46,19 +41,38 @@ favicon = "images/favicon.ico"
 [menu]
 
   [[menu.main]]
+    pre = "<i class='material-icons'>file_download</i>"
     identifier = "charts"
     name = "Helm Charts"
     url = "https://artifacthub.io/packages/helm/epinio/epinio"
     weight = -120
 
   [[menu.main]]
+    pre = "<i class='material-icons'>forum</i>"
     identifier = "slack"
     name = "Slack"
     url = "https://rancher-users.slack.com/?redir=%2Fmessages%2Fepinio"
     weight = -110
 
   [[menu.main]]
+    pre = "<i class='material-icons'>menu_book</i>"
     identifier = "docs"
     name = "Documentation"
     url = "https://docs.epinio.io"
     weight = -90
+    
+  [[menu.main]]
+    pre = "<i class='fa fa-github'></i>"
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/epinio/epinio/"
+
+  # Footer Menu
+  [[menu.footer]]
+    identifier = "docs"
+    name = "Docs"
+    url = "https://docs.epinio.io"
+  [[menu.footer]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/epinio/epinio/"
