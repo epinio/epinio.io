@@ -36,7 +36,8 @@ pagewidth: 12
       <div class="col-lg-11 mx-auto instructions">
         <h2 class="text-center">Install Epinio in under 5 minutes</h2>
 
-        <p>Download the <a href="https://github.com/epinio/epinio/releases/">latest cli client</a> into your PATH</p>
+	<p>Install the cli with brew (or download the <a href="https://github.com/epinio/epinio/releases/">latest cli client</a> into your PATH)</p>
+        <pre>brew install epinio</pre>
 
         <p>Install cert-manger if not already present</p>
         <pre>kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cert-manager.yaml</pre>
@@ -47,7 +48,7 @@ pagewidth: 12
         <p>Install the platform using helm</p>
         <pre>helm upgrade --install epinio epinio/epinio -n epinio --create-namespace --set global.domain=&LT;INGRESS_IP&GT;.sslip.io</pre>
 
-        <p>Pull setting from the cluster</p>
+        <p>Pull settings from the cluster</p>
         <pre>epinio settings update</pre>
 
         <p>Learn more in the <a href="https://docs.epinio.io/installation/installation.html">installation instructions</a>.</p>
