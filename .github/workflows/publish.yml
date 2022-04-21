@@ -11,11 +11,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-
-        # We use a forked action due to
-        # https://github.blog/2022-04-12-git-security-vulnerability-announced/ (https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-24765).
       - name: Publish Site
-        uses: kubewarden/hugo-gh-pages@fix-publishing
+        uses: chabad360/hugo-gh-pages@master
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           hugoVersion: extended_0.82.0
