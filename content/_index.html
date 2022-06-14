@@ -48,8 +48,8 @@ pagewidth: 12
         <p>Install the platform using helm</p>
         <pre>helm upgrade --install epinio epinio/epinio -n epinio --create-namespace --set global.domain=&LT;INGRESS_IP&GT;.sslip.io</pre>
 
-        <p>Pull settings from the cluster</p>
-        <pre>epinio settings update</pre>
+        <p>Login to the cluster</p>
+        <pre>epinio login -u admin https://epinio.&LT;INGRESS_IP&GT;.sslip.io</pre>
 
         <p>Learn more in the <a href="https://docs.epinio.io/installation/">installation instructions</a>.</p>
       </div>
