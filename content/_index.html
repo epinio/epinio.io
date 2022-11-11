@@ -1,6 +1,6 @@
 ---
 title: "The Application Development Engine for Kubernetes"
-subtitle: "Tame your developer workflow to go from Code to URL in one step."
+subtitle: "Tame your developer workflow to go from Code to URL in one push."
 description: "Epinio installs into any Kubernetes cluster to bring your application from source code to deployment and allow for Developers and Operators to work better together!"
 class: "landing-page"
 pagewidth: 12
@@ -34,31 +34,19 @@ pagewidth: 12
 
     <div class="row">
       <div class="col-lg-11 mx-auto instructions">
-        <h2 class="text-center">Install Epinio in under 5 minutes</h2>
+        <h2 class="text-center">Install and use Epinio in under 5 minutes</h2>
 
-	<p>Install the cli with brew (or download the <a href="https://github.com/epinio/epinio/releases/">latest cli client</a> into your PATH)</p>
-        <pre>brew install epinio</pre>
-
-        <p>Install cert-manager if not already present</p>
-        <pre>kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cert-manager.yaml</pre>
-
-        <p>Add the repo to helm</p>
-        <pre>helm repo add epinio https://epinio.github.io/helm-charts</pre>
-
-        <p>Install the platform using helm</p>
-        <pre>helm upgrade --install epinio epinio/epinio -n epinio --create-namespace --set global.domain=&LT;INGRESS_IP&GT;.sslip.io</pre>
-
-        <p>Login to the cluster</p>
-        <pre>epinio login -u admin https://epinio.&LT;INGRESS_IP&GT;.sslip.io</pre>
-
-        <p>Learn more in the <a href="https://docs.epinio.io/installation/install_epinio">installation instructions</a>.</p>
+	<p>Get access to a kubernetes cluster. Install cert-manager, if not already present.</p>
+        <p>Install Epinio in the cluster using helm.</p>
+	<p>Open the Web UI, or install the Epinio client for operation from a terminal.</p>
+        <p>Log into the cluster.</p>
+        <p>Push your application. Epinio builds the application image for you.</p>
+        <p>Learn the details in the <a href="https://docs.epinio.io/installation/install_epinio">installation instructions</a>.</p>
       </div>
     </div>
   </div>
 </section>
 <!-- -------- END Features w/ title and 3 infos -------- -->
-
-
 
 <section class="">
   <div class="container py-5">
