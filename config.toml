@@ -7,8 +7,9 @@ enableRobotsTXT = true
 pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 enableGitInfo = true
-googleAnalytics = 'UA-56382716-12'
-disableKinds = ["section", "taxonomy", "taxonomyTerm", "RSS", "sitemap", "robotsTXT", "404"]
+# # Disable google analytics for now, due to deprecation notice and site transfer
+# googleAnalytics = 'UA-56382716-12'
+disableKinds = ["section", "taxonomy", "RSS", "sitemap", "robotsTXT", "404"]
 
 [blackfriday]
 fractions = false
@@ -33,7 +34,7 @@ favicon = "images/favicon.ico"
 [privacy]
   [privacy.googleAnalytics]
     anonymizeIP = true
-  [privacy.twitter]
+  [privacy.x]
     disable = false
     enableDNT = false
     simple = true
