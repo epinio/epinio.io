@@ -1,10 +1,12 @@
-name: Publish Site
+name: Test Site
+
 on:
-  push:
+  pull_request:
     branches:
       - main
+
 jobs:
-  build-deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -19,8 +21,3 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
-      - name: Publish Site
-        uses: chabad360/hugo-gh-pages@master
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          hugoVersion: extended_0.147.9
