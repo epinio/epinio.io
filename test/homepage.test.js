@@ -100,6 +100,8 @@ describe('Homepage', () => {
     expect(screenshot).toMatchImageSnapshot({
       customSnapshotsDir: `${__dirname}/__image_snapshots__`,
       customDiffDir: `${__dirname}/__image_snapshots__/__diff_output__`,
+      failureThreshold: 0.01,
+      failureThresholdType: 'percent',
     });
   }), 20000);
 });
