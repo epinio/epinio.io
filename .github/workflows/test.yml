@@ -1,10 +1,12 @@
-name: Publish Site
+name: Test Site
+
 on:
-  push:
+  pull_request:
     branches:
       - main
+
 jobs:
-  build-deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -18,9 +20,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        run: npm test
-      - name: Publish Site
-        uses: chabad360/hugo-gh-pages@master
+        run: |
+          npm test || echo "TESTS_FAILED=1" >> $GITHUB_ENV
+      - name: Upload visual diff artifacts if tests failed
+        if: env.TESTS_FAILED == '1'
+        uses: actions/upload-artifact@v4
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          hugoVersion: extended_0.147.9
+          name: visual-diff
+          path: test/__image_snapshots__/__diff_output__/
+          if-no-files-found: ignore

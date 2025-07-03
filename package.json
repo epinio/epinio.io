@@ -1,0 +1,38 @@
+{
+  "name": "epinio.io",
+  "version": "1.0.0",
+  "description": "Epinio.io website",
+  "author": "Epinio Team <team@epinio.io> (https://epinio.io)",
+  "contributors": [
+    "Epinio Team <epinio@krum.io>"
+  ],
+  "homepage": "https://epinio.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epinio/epinio.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/epinio/epinio.io/issues"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "jest",
+    "test:snap": "jest --updateSnapshot",
+    "start": "npm run serve",
+    "serve": "hugo serve --minify -DFE -w",
+    "build": "hugo --minify",
+    "build:serve": "serve public"
+  },
+  "dependencies": {
+    "hugo-extended": "^0.147.9",
+    "serve": "^14.2.0"
+  },
+  "devDependencies": {
+    "puppeteer": "^22.0.0",
+    "jest": "^29.0.0",
+    "jest-image-snapshot": "^6.5.1"
+  },
+  "engines": {
+    "node": ">=18.0.0 <25.0.0"
+  }
+}
