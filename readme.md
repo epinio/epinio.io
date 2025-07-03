@@ -62,3 +62,23 @@ hugo
 
 This will generate the static files in the `public` directory.
 You can then commit the contents of the `public` directory.
+
+## Testing
+
+### To run all tests (including screenshot comparison):
+
+```bash
+npm test
+```
+
+Snapshots are stored in `test/__image_snapshots__` next to the test files. If the homepage changes visually, update the snapshots and review the diffs in `test/__image_snapshots__/__diff_output__`.
+
+### Visual Regression Testing (Screenshots)
+
+This project uses [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) and Puppeteer for visual regression testing of the homepage. Screenshots are generated when tests complete successfully and functionality is verified (the changes are confirmed).
+
+### To update/generate new screenshot snapshots:
+
+```bash
+npm run test:snap
+```
