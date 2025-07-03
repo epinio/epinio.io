@@ -28,3 +28,22 @@ jobs:
           name: visual-diff
           path: test/__image_snapshots__/__diff_output__/
           if-no-files-found: ignore
+      - name: Generate PR comment with base64 diff images
+        if: failure() && github.event_name == 'pull_request'
+        run: |
+          echo '## :warning: Visual Regression Test Failed' > pr-comment.md
+          echo 'Visual differences were detected in the homepage screenshot(s).' >> pr-comment.md
+          for img in test/__image_snapshots__/__diff_output__/*.png; do
+            if [ -f "$img" ]; then
+              echo "\n<details><summary>Diff image: $(basename "$img")</summary>" >> pr-comment.md
+              echo '<img src="data:image/png;base64,'$(base64 -w 0 "$img")'" />' >> pr-comment.md
+              echo '</details>' >> pr-comment.md
+            fi
+          done
+      - name: Post visual diff images to PR (inline)
+        if: failure() && github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: pr-comment.md
