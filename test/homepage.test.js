@@ -51,7 +51,9 @@ describe('Homepage', () => {
     return async (...args) => {
       let browser;
       try {
-        browser = await puppeteer.launch();
+        browser = await puppeteer.launch({
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
         return await fn(browser, ...args);
       } catch (err) {
         console.error('Error in browser test:', err);
