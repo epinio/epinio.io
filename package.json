@@ -16,7 +16,7 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "npm run serve",
     "serve": "hugo serve --minify -DFE -w",
     "build": "hugo --minify",
@@ -25,5 +25,10 @@
   "dependencies": {
     "hugo-extended": "^0.147.9",
     "serve": "^14.2.0"
+  },
+  "devDependencies": {
+    "puppeteer": "^22.0.0",
+    "jest": "^29.0.0",
+    "jest-image-snapshot": "^6.5.1"
   }
 }
