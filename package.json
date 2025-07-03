@@ -1,0 +1,26 @@
+{
+  "name": "epinio.io",
+  "version": "1.0.0",
+  "description": "Epinio.io website",
+  "author": "Epinio Team <team@epinio.io> (https://epinio.io)",
+  "contributors": [
+    "Epinio Team <epinio@krum.io>"
+  ],
+  "homepage": "https://epinio.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epinio/epinio.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/epinio/epinio.io/issues"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run serve",
+    "serve": "hugo serve --minify -DFE -w"
+  },
+  "dependencies": {
+    "hugo-extended": "^0.147.9"
+  }
+}
