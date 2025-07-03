@@ -15,4 +15,4 @@ jobs:
         uses: chabad360/hugo-gh-pages@master
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          hugoVersion: extended_0.115.2
+          hugoVersion: extended_0.147.9
