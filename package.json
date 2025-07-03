@@ -19,8 +19,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run serve",
     "serve": "hugo serve --minify -DFE -w",
-    "build": "hugo --minify"
-    ,
+    "build": "hugo --minify",
     "build:serve": "serve public"
   },
   "dependencies": {
