@@ -28,19 +28,3 @@ jobs:
           name: visual-diff
           path: test/__image_snapshots__/__diff_output__/
           if-no-files-found: ignore
-      - name: Post visual diff images to PR (if any)
-        if: failure() && github.event_name == 'pull_request'
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            ## :warning: Visual Regression Test Failed
-            Visual differences were detected in the homepage screenshot(s).
-            
-            <details>
-            <summary>Download the diff images as a zip</summary>
-            <a href="${{ steps.upload-artifact.outputs.artifact-url }}">Download visual diff images</a>
-            </details>
-            
-            > To see the images inline, download and extract the zip, then view the PNGs locally.
