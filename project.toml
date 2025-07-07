@@ -1,0 +1,7 @@
+[[io.buildpacks.build.env]]
+BP_NODE_RUN_SCRIPTS='build'
+HUGO_ENABLEGITINFO='false'
+
+[[io.buildpacks.run.env]]
+BP_WEB_SERVER_ROOT='public'
+BP_WEB_SERVER='nginx'
