@@ -4,5 +4,7 @@ HUGO_ENABLEGITINFO='false'
 BP_WEB_SERVER_ROOT='public'
 BP_WEB_SERVER='nginx'
 
-# [[io.buildpacks.run.env]]
+[[io.buildpacks.run.env]]
 # BP_LAUNCHPOINT="npm run serve"
+BP_WEB_SERVER_ROOT='public'
+BP_WEB_SERVER='nginx'
