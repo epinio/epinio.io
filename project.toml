@@ -1,6 +1,8 @@
 [[io.buildpacks.build.env]]
 BP_NODE_RUN_SCRIPTS='build'
 HUGO_ENABLEGITINFO='false'
+BP_WEB_SERVER_ROOT='public'
+BP_WEB_SERVER='nginx'
 
-[[io.buildpacks.run.env]]
-BP_LAUNCHPOINT="npm run serve"
+# [[io.buildpacks.run.env]]
+# BP_LAUNCHPOINT="npm run serve"
