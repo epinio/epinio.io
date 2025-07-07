@@ -2,6 +2,9 @@
 /resources/_gen
 .hugo_build.lock
 
+# test output
+test/__image_snapshots__/__diff_output__
+
 # Node.js
 node_modules/
 npm-debug.log*
