@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "hugo-extended": "^0.147.9",
-    "serve": "^14.2.0"
+    "serve": "^14.2.5"
   },
   "devDependencies": {
     "puppeteer": "^24.12.0",
