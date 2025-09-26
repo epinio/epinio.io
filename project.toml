@@ -1,14 +1,17 @@
+[_]
+schema-version = "0.2"
+
 [[io.buildpacks.build.env]]
 name = "BP_NODE_RUN_SCRIPTS"
-value = 'build'
+value = "build"
 
 [[io.buildpacks.build.env]]
 name = "HUGO_ENABLEGITINFO"
-value = 'false'
+value = "false"
 
 [[io.buildpacks.build.env]]
 name = "GIT_DISCOVERY_ACROSS_FILESYSTEM"
-value = '1'
+value = "1"
 
 [[io.buildpacks.run.env]]
 BP_WEB_SERVER_ROOT='public'
