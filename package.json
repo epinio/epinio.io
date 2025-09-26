@@ -20,7 +20,8 @@
     "test:snap": "jest --updateSnapshot",
     "start": "npm run serve",
     "serve": "hugo serve --minify -DFE -w",
-    "build": "HUGO_ENABLEGITINFO=false hugo --minify",
+    "build": "hugo --minify",
+    "build:nogit": "HUGO_ENABLEGITINFO=false hugo --minify",
     "build:serve": "serve public"
   },
   "dependencies": {
