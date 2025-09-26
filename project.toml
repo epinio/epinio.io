@@ -6,7 +6,7 @@ uri="paketo-buildpacks/environment-variables"
 
 [[io.buildpacks.build.env]]
 name="BP_NODE_RUN_SCRIPTS"
-value="build"
+value="build:nogit"
 
 [[io.buildpacks.build.env]]
 name="HUGO_ENABLEGITINFO"
@@ -18,7 +18,7 @@ value="1"
 
 [[build.env]]
 name="BP_NODE_RUN_SCRIPTS"
-value="build"
+value="build:nogit"
 
 [[build.env]]
 name="HUGO_ENABLEGITINFO"
