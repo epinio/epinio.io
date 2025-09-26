@@ -13,6 +13,18 @@ value = "false"
 name = "GIT_DISCOVERY_ACROSS_FILESYSTEM"
 value = "1"
 
+[[build.env]]
+name = "BP_NODE_RUN_SCRIPTS"
+value = "build"
+
+[[build.env]]
+name = "HUGO_ENABLEGITINFO"
+value = "false"
+
+[[build.env]]
+name = "GIT_DISCOVERY_ACROSS_FILESYSTEM"
+value = "1"
+
 [[io.buildpacks.run.env]]
 BP_WEB_SERVER_ROOT='public'
 BP_WEB_SERVER='nginx'
