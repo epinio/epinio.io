@@ -17,6 +17,7 @@
         {{ range .Site.Menus.main }}
         <li class="nav-item">
           <a class="nav-link"
+             target="_blank" rel="noopener noreferrer"
              href="{{ .URL }}"
              {{ if hasPrefix .URL "http" }}target="_blank" rel="noopener noreferrer"{{ end }}
              {{ if $.IsHome }}data-target="{{ .URL }}"{{ end }}

@@ -1,7 +1,7 @@
 .page-header{
     // height: 100vh;
-    background-position: left center;
-    background-size: cover;
+    background-position: center center;
+    background-size: contain;
     margin: 0;
     padding: 0;
     border: 0;
@@ -14,6 +14,8 @@
 
     > .container{
         color: $white-color;
+        max-width: none !important;
+        margin: 200px;
     }
 
     .title{
@@ -38,25 +40,29 @@
       color: #FFFFFF;
       h1 {
         font-family: Poppins, sans-serif;
-        font-size: 36px;
+        font-size: 46px;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 600;
         line-height: 48px; /* 133.333% */
-        letter-spacing: -0.54px;
         margin-bottom: 0.25rem;
       }
       .hero-para {
-        font-size: 18px;
-        line-height: 1.6;
+        color: #badeff;
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px; /* 147.368% */
         margin-top: 18px;
         margin-bottom: 0;
       }
       .hero-description {
+        color: #badeff;
         font-size: 16px;
-        line-height: 1.6;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 24px; /* 150% */
         margin-top: 12px;
         margin-bottom: 0;
-        opacity: 0.85;
       }
     }
 }
