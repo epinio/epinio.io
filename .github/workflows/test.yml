@@ -24,7 +24,7 @@ jobs:
           npm test || echo "TESTS_FAILED=1" >> $GITHUB_ENV
       - name: Upload visual diff artifacts if tests failed
         if: env.TESTS_FAILED == '1'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: visual-diff
           path: test/__image_snapshots__/__diff_output__/
