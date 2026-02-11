@@ -12,20 +12,19 @@ enableGitInfo = true
 disableKinds = ["section", "taxonomy", "RSS", "sitemap", "robotsTXT", "404"]
 
 [blackfriday]
-fractions = false
-#hrefTargetBlank = true
-
+  fractions = false
+  #hrefTargetBlank = true
 
 [params]
-# rename when the logo is updated, so we indirectly also invalidate caches
-logo = "images/epinio-logo-header.png"
-githubLink = "https://github.com/epinio/epinio"
-docsLink = "https://docs.epinio.io/"
-css = ["css/custom.css"]
-favicon = "images/favicon.ico"
+  # rename when the logo is updated, so we indirectly also invalidate caches
+  logo = "images/epinio-logo-header.png"
+  githubLink = "https://github.com/epinio/epinio"
+  docsLink = "https://docs.epinio.io/"
+  css = ["css/custom.css"]
+  favicon = "images/favicon.ico"
   github = "https://github.com/epinio/epinio"
 
-  custom_css = ["custom.css"]
+  custom_css = ["custom.css", "font.css"]
   version = "1.1.1"
   
 [outputs]
