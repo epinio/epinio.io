@@ -48,3 +48,10 @@
 .instructions pre:before {
   content: "$ "
 }
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+}
