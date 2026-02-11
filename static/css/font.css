@@ -38,6 +38,10 @@ a {
   font-size: var(--font-size-sm) !important;
 }
 
+a.base {
+  font-size: var(--font-size-base) !important;
+}
+
 h1, .h1 {
   font-size: var(--font-size-h1);
   line-height: var(--line-height-tight);
