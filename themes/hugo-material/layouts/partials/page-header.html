@@ -1,19 +1,17 @@
-<div class="page-header header-filter clear-filter light-blue-filter" 
-       data-parallax="true" >
+<div class="page-header header-filter clear-filter"
+       data-parallax="true" style="background-image: url('/images/epinio-background-hero.svg');" >
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-md-6 mb-md-0 mb-4">
+        <div class="col-md-5 mb-md-0 mb-4">
           <div class="brand">
             <h1>{{ .Title }}</h1>
-            <h3>{{ .Params.subtitle }}</h3>
-            
-            {{ with .Params.description }} {{ . }}{{ end }}
+            <p class="hero-para">{{ .Params.subtitle }}</p>
+            {{ with .Params.description }}<p class="hero-description">{{ . }}</p>{{ end }}
           </div>
         </div>
-        
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div class="blur-shadow-image text-center">
-            <img src="/images/epinio-mock.png" alt="Epinio Push" class="img-fluid shadow-xl border-radius-lg max-height-500">
+            <img src="/images/epinio-dashboard.png" alt="Epinio Push" class="img-fluid shadow-xl border-radius-lg max-height-500">
           </div>
         </div>
       </div>

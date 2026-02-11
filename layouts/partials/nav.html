@@ -2,7 +2,8 @@
   <div class="container">
     <div class="navbar-translate">
       <a class="navbar-brand" href=" {{ .Site.BaseURL | relURL }}">
-        <img  src="images/logo-epinio.svg" alt="{{ .Site.Title }}">
+        <img class="nav-logo nav-logo-default" src="/images/logo-epinio-new.svg" alt="{{ .Site.Title }}">
+        <img class="nav-logo nav-logo-reverse" src="/images/logo-epinio-new-reverse.svg" alt="{{ .Site.Title }}">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
@@ -17,8 +18,9 @@
         <li class="nav-item">
           <a class="nav-link"
              href="{{ .URL }}"
-             {{ if $.IsHome }}data-target="{{ .URL }}"{{ end }} 
-             title = "{{ .Name }}">{{ .Pre }} {{ .Name }}</a>
+             {{ if hasPrefix .URL "http" }}target="_blank" rel="noopener noreferrer"{{ end }}
+             {{ if $.IsHome }}data-target="{{ .URL }}"{{ end }}
+             title="{{ .Name }}">{{ .Name }}{{ if hasPrefix .URL "http" }} <i class="material-icons external-link-icon">open_in_new</i>{{ end }}</a>
         </li>
         {{ end }}
         <!-- <li class="nav-item dropdown">

@@ -1,6 +1,5 @@
 .navbar-brand img {
-  height: 30px;
-  margin-top: -5px;
+  width: 150px;
 }
 
 .navbar.navbar-transparent .navbar-brand,

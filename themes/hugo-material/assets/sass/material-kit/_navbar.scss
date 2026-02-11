@@ -11,11 +11,11 @@
 
     .navbar-nav{
         .nav-item .nav-link{
+            font-family: Poppins, sans-serif;
             position: relative;
             color: inherit;
             padding: $padding-general-x;
             font-weight: $font-weight-default;
-            font-size: $mdb-btn-font-size-base;
             text-transform: uppercase;
             border-radius: $border-radius-base;
             line-height: 20px;
@@ -146,11 +146,17 @@
         @include navbar-colors($grey-900, $white-color);
     }
 
+    .nav-logo-default { display: none; }
+    .nav-logo-reverse { display: inline-block; }
+
     &.navbar-transparent{
         background-color: transparent !important;
         box-shadow: none;
         padding-top: 25px;
         color: $white-color;
+
+        .nav-logo-default { display: inline-block; }
+        .nav-logo-reverse { display: none; }
     }
 
 }
