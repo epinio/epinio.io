@@ -1,70 +1,136 @@
 ---
-title: "The Application Development Engine for Kubernetes"
-subtitle: "Tame your developer workflow to go from Code to URL in one push."
-description: "Epinio installs into any Kubernetes cluster to bring your application from source code to deployment and allow for Developers and Operators to work better together!"
-class: "landing-page"
+title: 'The Application Development Engine for Kubernetes'
+subtitle: 'Tame your developer workflow to go from Code to URL in one push.'
+description: 'Epinio installs into any Kubernetes cluster to bring your application from source code to deployment and allow for Developers and Operators to work better together!'
+class: 'landing-page'
 pagewidth: 12
 ---
 
-<!-- -------- START Features w/ title and 3 infos -------- -->
-<section class="">
+<!-- Where Epinio Helps -->
+<div class="section section-basic">
   <div class="container">
-    <!-- -------- START Features w/ title and 3 infos -------- -->
-    <h2 class="text-center mt-2">Why use Epinio?</h2>
+    <h2 class="text-center mt-2">Where Epinio Helps?</h2>
+    <p class="text-center">
+      Epinio abstracts away the complexity of Kubernetes so you can get back to
+      writing code. Apps are launched with a single command, eliminating complex
+      CD pipelines and YAML files. It’s like having your own PaaS solution that
+      you can control!
+    </p>
     <div class="row">
-      <div class="col-lg-4 col-md-6">
+      <div class="col-md-6">
         <div class="p-3 text-center">
-          <h3 class="mt-4">Developer Happiness</h3>
-          <p>Reduce the stress and focus on your application logic instead of Container or Kubernetes details.</p>
+          <h3 class="mt-4">Push from source</h3>
+          <p>
+            Utilize your application's Git repository, archive, or container
+            image to deploy with just a few clicks. Epinio enables you to add
+            your Git repository and choose the specific branch and commit you
+            wish to build. There's no longer a need to set up complex continuous
+            delivery pipelines to deliver your application to users.
+          </p>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6">
+      <div class="col-md-6">
         <div class="p-3 text-center">
-          <h3 class="mt-4">Fast &amp; Lightweight</h3>
-          <p>Epinio runs well on any Kubernetes Cluster including your local development machine with <a href="https://rancherdesktop.io">Rancher Desktop</a></p>
+          <h3 class="mt-4">Service Binding</h3>
+          <p>
+            With the Epinio Service Catalog, you can select from a variety of
+            options, including popular database types like MySQL and MongoDB, to
+            seamlessly integrate essential services into your application. This
+            approach not only simplifies the process but also ensures that the
+            services will work as intended upon deployment, allowing you to
+            focus on building your application without the hassle of writing
+            complex deployment configuration files.
+          </p>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mx-md-auto">
+      <div class="col-md-6">
         <div class="p-3 text-center">
-          <h3 class="mt-4">Flexible with Sane Defaults</h3>
-          <p>Epinio uses Kubernetes generics and open-source components to give a fantastic developer experience without locking you into our idea of what an application looks like.</p>
+          <h3 class="mt-4">Application Management</h3>
+          <p>
+            Monitor the status of your applications, scale instances as needed,
+            configure various settings, and deploy new versions—all directly
+            from the Epinio platform. This streamlined approach empowers you to
+            manage your applications efficiently, ensuring that you can respond
+            quickly to changing demands and maintain optimal performance without
+            the complexity often associated with traditional deployment
+            processes.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 text-center">
+          <h3 class="mt-4">Namespace Management</h3>
+          <p>
+            Effortlessly add and remove namespaces directly from the Epinio
+            platform to effectively organize your applications within the
+            cluster. This functionality allows you to create a structured
+            environment, making it easier to manage and isolate different
+            applications or services, ultimately enhancing your workflow and
+            improving resource allocation.
+          </p>
         </div>
       </div>
     </div>
-    <h2 class="text-center mt-2">Install and use Epinio in under 5 minutes</h2>
+  </div>
+</div>
+
+<!-- Get Started with Epinio -->
+<div class="section section-basic section-blue">
+  <div class="container">
+    <h2 class="text-center mt-2">Get Started with Epinio</h2>
     <div class="p-3 row align-items-center">
       <div class="col-md-6 mx-auto instructions">
-	<p>Get access to a kubernetes cluster. Install cert-manager, if not already present.</p>
+        <p>
+          Get access to a kubernetes cluster. Install cert-manager, if not
+          already present.
+        </p>
         <p>Install Epinio in the cluster using helm.</p>
-	<p>Open the Web UI, or install the Epinio client for operation from a terminal.</p>
+        <p>
+          Open the Web UI, or install the Epinio client for operation from a
+          terminal.
+        </p>
         <p>Log into the cluster.</p>
-        <p>Push your application. Epinio builds the application image for you.</p>
+        <p>
+          Push your application. Epinio builds the application image for you.
+        </p>
       </div>
       <div class="col-md-6 mx-auto">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">LEARN MORE</h5>
-	    <p class="card-text lead mb-4"> Learn the details in the <a href="https://docs.epinio.io/installation/install_epinio">installation instructions</a>.</p>
-	  </div>
-	</div>
+            <h5 class="card-title">INSTALL NOW</h5>
+            <p class="card-text lead mb-4">
+              Learn the details in the
+              <a
+                href="https://docs.epinio.io/installation/install_epinio"
+                target="_blank"
+                rel="noopener"
+                >installation instructions</a
+              >.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
-<!-- -------- END Features w/ title and 3 infos -------- -->
+</div>
 
-<section class="">
+<!-- <section class="">
   <div class="container py-5">
     <div class="row align-items-center">
       <div class="col-md-6 mb-md-0 mb-4">
         <h3>Push from Source</h3>
         <p class="lead mb-md-5 mb-4">
-          Push your code directly to the platform without needing to build complicated CD pipelines or writing any yaml.
+          Push your code directly to the platform without needing to build
+          complicated CD pipelines or writing any yaml.
         </p>
       </div>
       <div class="col-md-6">
         <div class="blur-shadow-image text-center">
-          <img src="/images/push.gif" alt="Epinio Push" class="img-fluid shadow-xl border-radius-lg max-height-500">
+          <img
+            src="/images/push.gif"
+            alt="Epinio Push"
+            class="img-fluid shadow-xl border-radius-lg max-height-500"
+          />
         </div>
       </div>
     </div>
@@ -76,20 +142,26 @@ pagewidth: 12
     <div class="row align-items-center">
       <div class="col-md-6">
         <div class="blur-shadow-image text-center">
-          <img src="/images/debugging.gif" alt="VS Code remote debugging" class="img-fluid shadow-xl border-radius-lg max-height-500">
+          <img
+            src="/images/debugging.gif"
+            alt="VS Code remote debugging"
+            class="img-fluid shadow-xl border-radius-lg max-height-500"
+          />
         </div>
       </div>
       <div class="col-md-6 mb-md-0 mb-4">
         <h3>Debugging tools</h3>
         <p class="lead mb-md-5 mb-4">
-          Dig into what your application is doing with your favorite debugger or IDE.
+          Dig into what your application is doing with your favorite debugger or
+          IDE.
         </p>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
-<section class="">
+<!-- How it works -->
+<div class="section section-basic">
   <div class="container py-5">
     <div class="row align-items-center">
       <div class="col-md-12">
@@ -97,16 +169,97 @@ pagewidth: 12
       </div>
       <div class="col-md-12">
         <div class="blur-shadow-image text-center">
-          <img src="../images/how-it-works-epinio.svg" alt="{{ .Site.Title }}" class="img-fluid shadow-xl border-radius-lg max-height-500">
+          <img
+            src="../images/how-it-works-epinio.svg"
+            alt="{{ .Site.Title }}"
+            class="img-fluid shadow-xl border-radius-lg max-height-500"
+          />
         </div>
       </div>
       <div class="col-md-12">
-        <p class="text-left font-weight-light">The Epinio API server uses build packs to create container images from source code.</p>
-        <p class="text-left font-weight-light">A single `epinio push` builds an image and deploys the application. Once Epinio has been installed no further Kubernetes knowledge is needed to develop and deploy applications.</p>
+        <p class="text-left font-weight-light">
+          The Epinio API server uses build packs to create container images from
+          source code.
+        </p>
+        <p class="text-left font-weight-light">
+          A single `epinio push` builds an image and deploys the application.
+          Once Epinio has been installed no further Kubernetes knowledge is
+          needed to develop and deploy applications.
+        </p>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- FAQ -->
+<div class="section section-basic">
+  <div class="container">
+    <h2 class="text-center mt-2">FAQ</h2>
+    <div class="p-3 text-center">
+      <h3 class="mt-4">What is Epinio?</h3>
+      <p>
+        Epinio is an open-source application platform that simplifies how teams
+        build, deploy, and manage applications on Kubernetes. It provides a
+        developer-friendly workflow so you can focus on writing code instead of
+        managing complex infrastructure.
+      </p>
+    </div>
+    <div class="p-3 text-center">
+      <h3 class="mt-4">How does Epinio help teams deploy applications?</h3>
+      <p>
+        Epinio streamlines the deployment process by allowing you to push
+        applications from source code, containers, or archives. It automates
+        much of the underlying Kubernetes complexity, making it faster and
+        easier to get applications running in your cluster.
+      </p>
+    </div>
+    <div class="p-3 text-center">
+      <h3 class="mt-4">
+        Can Epinio integrate with databases and other services?
+      </h3>
+      <p>
+        Yes. Epinio includes a service catalog that allows you to bind
+        applications to common services like databases and other backing
+        services. This makes it easy to connect your app to the resources it
+        needs without complex configuration.
+      </p>
+    </div>
+    <div class="p-3 text-center">
+      <h3 class="mt-4">Can I customize or extend Epinio?</h3>
+      <p>
+        Absolutely. Since Epinio is open source, you can fork the repository,
+        submit pull requests, or build custom extensions to meet your needs.
+        This gives teams full flexibility and control over how they use the
+        platform.
+      </p>
+    </div>
+    <div class="p-3 text-center">
+      <h3 class="mt-4">Is Epinio actively maintained?</h3>
+      <p>
+        Epinio is continuously improved by its community and contributors.
+        Updates help keep the platform aligned with modern Kubernetes practices,
+        security standards, and developer needs.
+      </p>
+    </div>
+    <div class="p-3 text-center">
+      <h3 class="mt-4">Is Epinio actively maintained?</h3>
+      <p>
+        If your team needs guidance with setup, customization, or best
+        practices, commercial support options are available.
+        <a
+          href="https://www.krum.io/products/epinio"
+          target="_blank"
+          rel="noopener"
+        >
+          Krumware
+        </a>
+        provides professional services and support to help organizations
+        successfully deploy and operate Epinio.
+      </p>
+    </div>
+  </div>
+</div>
+
 <!-- -------- START CTA -------- -->
 <section class="py-5">
   <div class="container">
@@ -115,9 +268,21 @@ pagewidth: 12
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">How To Get Involved</h5>
-            <p class="card-text">Epinio is an open source project hosted on GitHub. Bugs and features are tracked through issues and new code is reviewed through pull requests.</p>
-            <a href="https://github.com/epinio/epinio/issues" class="btn btn-primary">Issues</a>
-            <a href="https://github.com/epinio/epinio/pulls" class="btn btn-primary">Pull Requests</a>
+            <p class="card-text">
+              Epinio is an open source project hosted on GitHub. Bugs and
+              features are tracked through issues and new code is reviewed
+              through pull requests.
+            </p>
+            <a
+              href="https://github.com/epinio/epinio/issues"
+              class="btn btn-primary"
+              >Issues</a
+            >
+            <a
+              href="https://github.com/epinio/epinio/pulls"
+              class="btn btn-primary"
+              >Pull Requests</a
+            >
           </div>
         </div>
       </div>
@@ -125,9 +290,19 @@ pagewidth: 12
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">How To Get Support</h5>
-            <p class="card-text">Found an issue or have a problem? Community support happens in the #epinio channel in Slack and in the issue queus, where you can search and file new issues.</p>
-            <a href="https://slack.rancher.io/" class="btn btn-primary">Rancher Users Slack</a>
-            <a href="https://github.com/epinio/epinio/issues" class="btn btn-primary">Issues</a>
+            <p class="card-text">
+              Found an issue or have a problem? Community support happens in the
+              #epinio channel in Slack and in the issue queus, where you can
+              search and file new issues.
+            </p>
+            <a href="https://slack.rancher.io/" class="btn btn-primary"
+              >Rancher Users Slack</a
+            >
+            <a
+              href="https://github.com/epinio/epinio/issues"
+              class="btn btn-primary"
+              >Issues</a
+            >
           </div>
         </div>
       </div>

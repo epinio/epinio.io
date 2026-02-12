@@ -51,3 +51,8 @@
 .instructions pre:before {
   content: "$ "
 }
+
+.section-blue {
+  background-color: #004d93;
+  color: #fdfdfd;
+}
