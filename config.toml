@@ -62,6 +62,12 @@ disableKinds = ["section", "taxonomy", "RSS", "sitemap", "robotsTXT", "404"]
     identifier = "github"
     name = "GitHub"
     url = "https://github.com/epinio/epinio/"
+    weight = -80
+  
+  [[menu.main]]
+    identifier = "support"
+    name = "Get Support"
+    url = "https://www.krum.io/contact"
 
   # Footer Menu
   [[menu.footer]]
