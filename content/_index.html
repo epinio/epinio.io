@@ -6,6 +6,49 @@ class: 'landing-page'
 pagewidth: 12
 ---
 
+<!-- Get Started with Epinio -->
+<div class="section section-basic section-blue">
+  <div class="container">
+    <h2 class="text-center mt-2">Get Started with Epinio</h2>
+    <div class="p-3 row align-items-center">
+      <div class="col-md-6 mx-auto instructions">
+        <p>
+          Get access to a kubernetes cluster. Install cert-manager, if not
+          already present.
+        </p>
+        <p>Install Epinio in the cluster using helm.</p>
+        <p>
+          Open the Web UI, or install the Epinio client for operation from a
+          terminal.
+        </p>
+        <p>Log into the cluster.</p>
+        <p>
+          Push your application. Epinio builds the application image for you.
+        </p>
+      </div>
+      <div class="col-md-6 mx-auto">
+        <div class="card mt-0">
+          <div class="card-body">
+            <h5 class="card-title">LEARN MORE</h5>
+            <p class="card-text lead mb-4">
+              Learn the details in the
+              <a
+                class="base font-weight-bold"
+                href="https://docs.epinio.io/installation/install_epinio"
+              >
+                installation instructions.
+                <span>
+                  <i class="material-icons">link</i>
+                </span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Where Epinio Helps -->
 <div class="section section-basic">
   <div class="container">
@@ -16,9 +59,11 @@ pagewidth: 12
       CD pipelines and YAML files. It’s like having your own PaaS solution that
       you can control!
     </p>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="p-3 text-center">
+  </div>
+  <section class="">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-md-4 mb-md-0 mb-4">
           <h3 class="mt-4">Push from source</h3>
           <p>
             Utilize your application's Git repository, archive, or container
@@ -28,9 +73,32 @@ pagewidth: 12
             delivery pipelines to deliver your application to users.
           </p>
         </div>
+        <div class="col-md-8">
+          <div class="blur-shadow-image text-center">
+            <img
+              src="/images/epinio.png"
+              alt="Epinio Push"
+              class="img-fluid shadow-xl border-radius-lg max-height-500"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <div class="p-3 text-center">
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <div class="blur-shadow-image text-center">
+            <img
+              src="/images/epinio-instances.png"
+              alt="VS Code remote debugging"
+              class="img-fluid shadow-xl border-radius-lg max-height-500"
+            />
+          </div>
+        </div>
+        <div class="col-md-4 mb-md-0 mb-4">
           <h3 class="mt-4">Service Binding</h3>
           <p>
             With the Epinio Service Catalog, you can select from a variety of
@@ -43,8 +111,13 @@ pagewidth: 12
           </p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="p-3 text-center">
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-md-4 mb-md-0 mb-4">
           <h3 class="mt-4">Application Management</h3>
           <p>
             Monitor the status of your applications, scale instances as needed,
@@ -56,9 +129,32 @@ pagewidth: 12
             processes.
           </p>
         </div>
+        <div class="col-md-8">
+          <div class="blur-shadow-image text-center">
+            <img
+              src="/images/epinio-applications.png"
+              alt="Epinio Push"
+              class="img-fluid shadow-xl border-radius-lg max-height-500"
+            />
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <div class="p-3 text-center">
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <div class="blur-shadow-image text-center">
+            <img
+              src="/images/epinio-namespaces.png"
+              alt="VS Code remote debugging"
+              class="img-fluid shadow-xl border-radius-lg max-height-500"
+            />
+          </div>
+        </div>
+        <div class="col-md-4 mb-md-0 mb-4">
           <h3 class="mt-4">Namespace Management</h3>
           <p>
             Effortlessly add and remove namespaces directly from the Epinio
@@ -71,88 +167,8 @@ pagewidth: 12
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
-
-<!-- Get Started with Epinio -->
-<div class="section section-basic section-blue">
-  <div class="container">
-    <h2 class="text-center mt-2">Get Started with Epinio</h2>
-    <div class="p-3 row align-items-center">
-      <div class="col-md-6 mx-auto instructions">
-	      <p>Get access to a kubernetes cluster. Install cert-manager, if not already present.</p>
-        <p>Install Epinio in the cluster using helm.</p>
-	      <p>Open the Web UI, or install the Epinio client for operation from a terminal.</p>
-        <p>Log into the cluster.</p>
-        <p>
-          Push your application. Epinio builds the application image for you.
-        </p>
-      </div>
-      <div class="col-md-6 mx-auto">
-        <div class="card mt-0">
-          <div class="card-body">
-            <h5 class="card-title">LEARN MORE</h5>
-            <p class="card-text lead mb-4">
-              Learn the details in the
-              <a class="base font-weight-bold" href="https://docs.epinio.io/installation/install_epinio">
-                installation instructions.
-                <span>
-                  <i class='material-icons'>link</i>
-                </span>
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- <section class="">
-  <div class="container py-5">
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-md-0 mb-4">
-        <h3 class="font-weight-bold">Push from Source</h3>
-        <p class="lead mb-md-5 mb-4">
-          Push your code directly to the platform without needing to build
-          complicated CD pipelines or writing any yaml.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <div class="blur-shadow-image text-center">
-          <img
-            src="/images/push.gif"
-            alt="Epinio Push"
-            class="img-fluid shadow-xl border-radius-lg max-height-500"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="">
-  <div class="container py-5">
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <div class="blur-shadow-image text-center">
-          <img
-            src="/images/debugging.gif"
-            alt="VS Code remote debugging"
-            class="img-fluid shadow-xl border-radius-lg max-height-500"
-          />
-        </div>
-      </div>
-      <div class="col-md-6 mb-md-0 mb-4">
-        <h3 class="font-weight-bold">Debugging tools</h3>
-        <p class="lead mb-md-5 mb-4">
-          Dig into what your application is doing with your favorite debugger or
-          IDE.
-        </p>
-      </div>
-    </div>
-  </div>
-</section> -->
 
 <!-- How it works -->
 <div class="section section-basic">
@@ -180,6 +196,38 @@ pagewidth: 12
           Once Epinio has been installed no further Kubernetes knowledge is
           needed to develop and deploy applications.
         </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Use Epinio in Rancher -->
+<div class="section section-basic section-blue">
+  <div class="container">
+    <h2 class="text-center mt-2">Use Epinio in Rancher</h2>
+    <div class="card p-5">
+      <div class="p-3 row align-items-center">
+        <p>
+          Epinio is available as an extension for Rancher, making it easy to add
+          a developer-friendly application platform to your local Kubernetes
+          environment. With Epinio running on Rancher, you can push source code,
+          deploy apps, and bind services with minimal setup. Get started with
+          the
+          <a
+            href="https://docs.epinio.io/installation/other_inst_scenarios/install_epinio_on_rancher_desktop"
+            target="_blank"
+            rel="noopener"
+          >
+            Rancher install guide.
+          </a>
+        </p>
+      </div>
+      <div class="blur-shadow-image text-center">
+        <img
+          src="/images/epinio-extension.png"
+          alt="VS Code remote debugging"
+          class="img-fluid shadow-xl border-radius-lg max-height-500"
+        />
       </div>
     </div>
   </div>
@@ -262,54 +310,58 @@ pagewidth: 12
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">How To Get Involved</h5>
-            <p class="card-text">Epinio is an open source project hosted on GitHub. Bugs and features are tracked through issues and new code is reviewed through pull requests.</p>
-            
+            <p class="card-text">
+              Epinio is an open source project hosted on GitHub. Bugs and
+              features are tracked through issues and new code is reviewed
+              through pull requests.
+            </p>
+
             <div class="footer-links">
               <a
                 class="btn btn-outline-primary base font-weight-bold"
                 target="_blank"
-                rel="noopener noreferrer" 
+                rel="noopener noreferrer"
                 href="https://github.com/epinio/epinio/issues"
               >
                 Epinio Server Issues
                 <span>
-                  <i class='material-icons'>link</i>
+                  <i class="material-icons">link</i>
                 </span>
               </a>
 
               <a
                 class="btn btn-outline-primary base font-weight-bold"
                 target="_blank"
-                rel="noopener noreferrer" 
+                rel="noopener noreferrer"
                 href="https://github.com/epinio/ui/issues"
               >
                 Epinio UI Issues
                 <span>
-                  <i class='material-icons'>link</i>
+                  <i class="material-icons">link</i>
                 </span>
               </a>
 
               <a
                 class="btn btn-outline-primary base font-weight-bold"
                 target="_blank"
-                rel="noopener noreferrer" 
+                rel="noopener noreferrer"
                 href="https://github.com/epinio/docs/issues"
               >
                 Epinio Doc Issues
                 <span>
-                  <i class='material-icons'>link</i>
+                  <i class="material-icons">link</i>
                 </span>
               </a>
 
               <a
                 class="btn btn-outline-primary base font-weight-bold"
                 target="_blank"
-                rel="noopener noreferrer" 
+                rel="noopener noreferrer"
                 href="https://github.com/epinio/helm-charts/issues"
               >
                 Helm Charts Issues
                 <span>
-                  <i class='material-icons'>link</i>
+                  <i class="material-icons">link</i>
                 </span>
               </a>
             </div>
