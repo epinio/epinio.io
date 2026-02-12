@@ -526,7 +526,7 @@ label{
 }
 
 .mt-2 {
-  color: var(--Grayscale-gray-600, #475B69);
+  // color: var(--Grayscale-gray-600, #475B69);
   font-feature-settings: 'liga' off, 'clig' off;
   
   /* Heading/h2 */
@@ -539,7 +539,7 @@ label{
 }
 
 .page-header {
-  height: calc(100vh);
+  height: calc(75vh);
 
   @media all and (max-width: 767px) {
     height: calc(100vh + 200px);

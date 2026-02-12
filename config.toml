@@ -12,20 +12,19 @@ enableGitInfo = true
 disableKinds = ["section", "taxonomy", "RSS", "sitemap", "robotsTXT", "404"]
 
 [blackfriday]
-fractions = false
-#hrefTargetBlank = true
-
+  fractions = false
+  #hrefTargetBlank = true
 
 [params]
-# rename when the logo is updated, so we indirectly also invalidate caches
-logo = "images/epinio-logo-header.png"
-githubLink = "https://github.com/epinio/epinio"
-docsLink = "https://docs.epinio.io/"
-css = ["css/custom.css"]
-favicon = "images/favicon.ico"
+  # rename when the logo is updated, so we indirectly also invalidate caches
+  logo = "images/epinio-logo-header.png"
+  githubLink = "https://github.com/epinio/epinio"
+  docsLink = "https://docs.epinio.io/"
+  css = ["css/custom.css"]
+  favicon = "images/favicon.ico"
   github = "https://github.com/epinio/epinio"
 
-  custom_css = ["custom.css"]
+  custom_css = ["custom.css", "font.css"]
   version = "1.1.1"
   
 [outputs]
@@ -42,31 +41,33 @@ favicon = "images/favicon.ico"
 [menu]
 
   [[menu.main]]
-    pre = "<i class='material-icons'>file_download</i>"
     identifier = "charts"
     name = "Helm Charts"
     url = "https://artifacthub.io/packages/helm/epinio/epinio"
     weight = -120
 
   [[menu.main]]
-    pre = "<i class='material-icons'>forum</i>"
     identifier = "slack"
     name = "Slack"
     url = "https://rancher-users.slack.com/?redir=%2Fmessages%2Fepinio"
     weight = -110
 
   [[menu.main]]
-    pre = "<i class='material-icons'>menu_book</i>"
     identifier = "docs"
     name = "Documentation"
     url = "https://docs.epinio.io"
     weight = -90
-    
+
   [[menu.main]]
-    pre = "<i class='fa fa-github'></i>"
     identifier = "github"
     name = "GitHub"
     url = "https://github.com/epinio/epinio/"
+    weight = -80
+  
+  [[menu.main]]
+    identifier = "support"
+    name = "Get Support"
+    url = "https://www.krum.io/contact"
 
   # Footer Menu
   [[menu.footer]]
