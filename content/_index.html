@@ -80,32 +80,26 @@ pagewidth: 12
     <h2 class="text-center mt-2">Get Started with Epinio</h2>
     <div class="p-3 row align-items-center">
       <div class="col-md-6 mx-auto instructions">
-        <p>
-          Get access to a kubernetes cluster. Install cert-manager, if not
-          already present.
-        </p>
+	      <p>Get access to a kubernetes cluster. Install cert-manager, if not already present.</p>
         <p>Install Epinio in the cluster using helm.</p>
-        <p>
-          Open the Web UI, or install the Epinio client for operation from a
-          terminal.
-        </p>
+	      <p>Open the Web UI, or install the Epinio client for operation from a terminal.</p>
         <p>Log into the cluster.</p>
         <p>
           Push your application. Epinio builds the application image for you.
         </p>
       </div>
       <div class="col-md-6 mx-auto">
-        <div class="card">
+        <div class="card mt-0">
           <div class="card-body">
-            <h5 class="card-title">INSTALL NOW</h5>
+            <h5 class="card-title">LEARN MORE</h5>
             <p class="card-text lead mb-4">
               Learn the details in the
-              <a
-                href="https://docs.epinio.io/installation/install_epinio"
-                target="_blank"
-                rel="noopener"
-                >installation instructions</a
-              >.
+              <a class="base font-weight-bold" href="https://docs.epinio.io/installation/install_epinio">
+                installation instructions.
+                <span>
+                  <i class='material-icons'>link</i>
+                </span>
+              </a>
             </p>
           </div>
         </div>
@@ -118,7 +112,7 @@ pagewidth: 12
   <div class="container py-5">
     <div class="row align-items-center">
       <div class="col-md-6 mb-md-0 mb-4">
-        <h3>Push from Source</h3>
+        <h3 class="font-weight-bold">Push from Source</h3>
         <p class="lead mb-md-5 mb-4">
           Push your code directly to the platform without needing to build
           complicated CD pipelines or writing any yaml.
@@ -150,7 +144,7 @@ pagewidth: 12
         </div>
       </div>
       <div class="col-md-6 mb-md-0 mb-4">
-        <h3>Debugging tools</h3>
+        <h3 class="font-weight-bold">Debugging tools</h3>
         <p class="lead mb-md-5 mb-4">
           Dig into what your application is doing with your favorite debugger or
           IDE.
@@ -165,7 +159,7 @@ pagewidth: 12
   <div class="container py-5">
     <div class="row align-items-center">
       <div class="col-md-12">
-        <h3>How it Works</h3>
+        <h3 class="font-weight-bold">How it Works</h3>
       </div>
       <div class="col-md-12">
         <div class="blur-shadow-image text-center">
@@ -264,45 +258,61 @@ pagewidth: 12
 <section class="py-5">
   <div class="container">
     <div class="row justify-space-between py-2">
-      <div class="col-6 mx-auto">
+      <div class="col-12 mx-auto">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">How To Get Involved</h5>
-            <p class="card-text">
-              Epinio is an open source project hosted on GitHub. Bugs and
-              features are tracked through issues and new code is reviewed
-              through pull requests.
-            </p>
-            <a
-              href="https://github.com/epinio/epinio/issues"
-              class="btn btn-primary"
-              >Issues</a
-            >
-            <a
-              href="https://github.com/epinio/epinio/pulls"
-              class="btn btn-primary"
-              >Pull Requests</a
-            >
-          </div>
-        </div>
-      </div>
-      <div class="col-6 mx-auto">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">How To Get Support</h5>
-            <p class="card-text">
-              Found an issue or have a problem? Community support happens in the
-              #epinio channel in Slack and in the issue queus, where you can
-              search and file new issues.
-            </p>
-            <a href="https://slack.rancher.io/" class="btn btn-primary"
-              >Rancher Users Slack</a
-            >
-            <a
-              href="https://github.com/epinio/epinio/issues"
-              class="btn btn-primary"
-              >Issues</a
-            >
+            <p class="card-text">Epinio is an open source project hosted on GitHub. Bugs and features are tracked through issues and new code is reviewed through pull requests.</p>
+            
+            <div class="footer-links">
+              <a
+                class="btn btn-outline-primary base font-weight-bold"
+                target="_blank"
+                rel="noopener noreferrer" 
+                href="https://github.com/epinio/epinio/issues"
+              >
+                Epinio Server Issues
+                <span>
+                  <i class='material-icons'>link</i>
+                </span>
+              </a>
+
+              <a
+                class="btn btn-outline-primary base font-weight-bold"
+                target="_blank"
+                rel="noopener noreferrer" 
+                href="https://github.com/epinio/ui/issues"
+              >
+                Epinio UI Issues
+                <span>
+                  <i class='material-icons'>link</i>
+                </span>
+              </a>
+
+              <a
+                class="btn btn-outline-primary base font-weight-bold"
+                target="_blank"
+                rel="noopener noreferrer" 
+                href="https://github.com/epinio/docs/issues"
+              >
+                Epinio Doc Issues
+                <span>
+                  <i class='material-icons'>link</i>
+                </span>
+              </a>
+
+              <a
+                class="btn btn-outline-primary base font-weight-bold"
+                target="_blank"
+                rel="noopener noreferrer" 
+                href="https://github.com/epinio/helm-charts/issues"
+              >
+                Helm Charts Issues
+                <span>
+                  <i class='material-icons'>link</i>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
