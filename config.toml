@@ -41,31 +41,33 @@ disableKinds = ["section", "taxonomy", "RSS", "sitemap", "robotsTXT", "404"]
 [menu]
 
   [[menu.main]]
-    pre = "<i class='material-icons'>file_download</i>"
     identifier = "charts"
     name = "Helm Charts"
     url = "https://artifacthub.io/packages/helm/epinio/epinio"
     weight = -120
 
   [[menu.main]]
-    pre = "<i class='material-icons'>forum</i>"
     identifier = "slack"
     name = "Slack"
     url = "https://rancher-users.slack.com/?redir=%2Fmessages%2Fepinio"
     weight = -110
 
   [[menu.main]]
-    pre = "<i class='material-icons'>menu_book</i>"
     identifier = "docs"
     name = "Documentation"
     url = "https://docs.epinio.io"
     weight = -90
-    
+
   [[menu.main]]
-    pre = "<i class='fa fa-github'></i>"
     identifier = "github"
     name = "GitHub"
     url = "https://github.com/epinio/epinio/"
+    weight = -80
+  
+  [[menu.main]]
+    identifier = "support"
+    name = "Get Support"
+    url = "https://www.krum.io/contact"
 
   # Footer Menu
   [[menu.footer]]

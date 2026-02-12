@@ -539,7 +539,7 @@ label{
 }
 
 .page-header {
-  height: calc(100vh);
+  height: calc(75vh);
 
   @media all and (max-width: 767px) {
     height: calc(100vh + 200px);
