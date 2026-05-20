@@ -7,8 +7,8 @@ enableRobotsTXT = true
 pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 enableGitInfo = true
-# # Disable google analytics for now, due to deprecation notice and site transfer
-# googleAnalytics = 'UA-56382716-12'
+
+googleAnalytics = 'G-3K6WVDB591'
 disableKinds = ["section", "taxonomy", "RSS", "sitemap", "robotsTXT", "404"]
 
 [blackfriday]
