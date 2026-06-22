@@ -24,7 +24,7 @@
     "build:serve": "serve public"
   },
   "dependencies": {
-    "hugo-extended": "^0.155.3",
+    "hugo-extended": "^0.157.0",
     "serve": "^14.2.5"
   },
   "devDependencies": {
