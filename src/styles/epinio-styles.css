@@ -1,0 +1,88 @@
+:root {
+  /* Brand colors */
+  --epinio-primary-color: #0086FF;
+  --epinio-primary-dark: #005580;
+  --epinio-primary-light: #0086FF80; /* 50% opacity version of epinio-primary-color */
+  --epinio-accent-color: #1A4A76;
+  --epinio-accent-dark: #003566;
+  --epinio-accent-light: #badeff;
+
+  /* Text */
+  --epinio-primary-text-color: #1A1A2E;
+  --epinio-secondary-text-color: #0075A8;
+  --epinio-muted-text-color: rgba(26, 26, 46, 0.55);
+  --epinio-white-text-color: #FFFFFF;
+  --epinio-muted-white-text-color: #F4F6F8;
+
+  /* Backgrounds */
+  --epinio-background-color: #FFFFFF;
+  --epinio-secondary-background-color: #F4F6F8;
+  --epinio-dark-background-color: #1A1A2E;
+
+  /* Grays */
+  --epinio-grayscale-950: #0D0D1A;
+  --epinio-grayscale-900: #1A1A2E;
+  --epinio-grayscale-800: #2E2E4A;
+  --epinio-grayscale-700: #444466;
+  --epinio-grayscale-600: #5A5A82;
+  --epinio-grayscale-500: #7070A0;
+  --epinio-grayscale-400: #9898B8;
+  --epinio-grayscale-300: #C0C0D8;
+  --epinio-grayscale-200: #E0E0F0;
+  --epinio-grayscale-100: #F0F0F8;
+  --epinio-grayscale-50: #F8F8FC;
+
+  /* Functional */
+  --epinio-error-color: #D0021B;
+  --epinio-success-color: #0AC780;
+
+  /* Layout */
+  --epinio-content-max-width: 1280px;
+  --epinio-font-family: 'Poppins', sans-serif;
+}
+
+html {
+  font-family: var(--epinio-font-family);
+  background: var(--epinio-background-color);
+}
+
+body {
+  margin: 0;
+}
+
+/* Full-width section backgrounds use this inner wrapper to constrain content */
+.page-container {
+  max-width: var(--epinio-content-max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .page-container {
+    padding: 0 20px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--epinio-font-family);
+}
+
+code {
+  font-family:
+    Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+}
+
+.truncate {
+  min-width: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

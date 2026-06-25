@@ -1,0 +1,100 @@
+---
+interface Props {
+  sectionTitle?: string;
+}
+
+const { sectionTitle = 'Get Started' } = Astro.props;
+---
+
+<section class="get-started">
+  <div class="page-container">
+    <h2 class="section-title">{sectionTitle}</h2>
+    <div class="get-started-layout">
+
+      <div class="steps-list">
+        <ol>
+          <slot name="steps" />
+        </ol>
+      </div>
+
+      <div class="card-wrapper">
+        <slot name="card" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .get-started {
+    background-color: var(--epinio-secondary-background-color);
+    padding: 80px 0;
+    color: var(--epinio-primary-dark);
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 48px;
+  }
+
+  .get-started-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Steps list — :global() because <li> elements come from the parent's slot */
+  :global(.steps-list ol) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  :global(.steps-list li) {
+    counter-increment: step;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  :global(.steps-list li::before) {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--epinio-primary-dark);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .card-wrapper {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .get-started-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import '@krumio/trailhand-ui/components/th-card';
+  import '@krumio/trailhand-ui/components/icon';
+  import '@krumio/trailhand-ui/components/button';
+</script>

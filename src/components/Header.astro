@@ -1,0 +1,245 @@
+---
+import { navItems } from "../assets/data/nav-items";
+import logoDefault from "../assets/images/logo-epinio-new.svg";
+import logoReverse from "../assets/images/logo-epinio-new-reverse.svg";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<style>
+  #sectionsNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 25px 0 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  #sectionsNav.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    padding: 10px 0;
+  }
+
+  .nav-container {
+    max-width: var(--epinio-content-max-width);
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo */
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .navbar-brand img {
+    width: 150px;
+    height: auto;
+    display: block;
+  }
+
+  .nav-logo-default { display: inline-block; }
+  .nav-logo-reverse { display: none; }
+
+  /* Nav links */
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* When scrolled, nav links go dark */
+  #sectionsNav.scrolled .nav-link {
+    color: #555555;
+  }
+
+  #sectionsNav.scrolled .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+
+  .external-icon {
+    width: 13px;
+    height: 13px;
+    opacity: 0.75;
+    flex-shrink: 0;
+  }
+
+  /* Mobile toggler */
+  .navbar-toggler {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  .navbar-toggler-icon {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 1px;
+    transition: background-color 0.2s ease;
+  }
+
+  #sectionsNav.scrolled .navbar-toggler-icon {
+    background-color: #555555;
+  }
+
+  /* Mobile menu */
+  .navbar-collapse {
+    display: flex;
+  }
+
+  @media (max-width: 991px) {
+    .navbar-toggler {
+      display: flex;
+    }
+
+    .navbar-collapse {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ffffff;
+      padding: 16px 32px;
+      overflow-y: auto;
+      flex-direction: column;
+    }
+
+    .navbar-collapse.open {
+      display: flex;
+    }
+
+    .navbar-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: 0;
+    }
+
+    .nav-link {
+      color: #555555;
+      width: 100%;
+      padding: 12px 8px;
+      border-radius: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      font-size: 15px;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+      color: #333333;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .nav-container {
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<nav id="sectionsNav" aria-label="Main navigation">
+  <div class="nav-container">
+    <a class="navbar-brand" href="/">
+      <img class="nav-logo-default" src={logoDefault.src} alt="Epinio" width="150" height="39" />
+      <img class="nav-logo-reverse" src={logoReverse.src} alt="Epinio" width="150" height="39" />
+    </a>
+
+    <button class="navbar-toggler" id="navToggler" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse" id="navMenu">
+      <ul class="navbar-nav">
+        {navItems.map(item => (
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href={item.url}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+              title={item.title}
+            >
+              {item.title}
+              {item.external && (
+                <svg class="external-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById('sectionsNav');
+  const toggler = document.getElementById('navToggler');
+  const menu = document.getElementById('navMenu');
+  const logoDefault = document.querySelector('.nav-logo-default') as HTMLElement;
+  const logoReverse = document.querySelector('.nav-logo-reverse') as HTMLElement;
+  const SCROLL_THRESHOLD = 100;
+
+  function updateNavState() {
+    const scrolled = window.scrollY >= SCROLL_THRESHOLD;
+    nav.classList.toggle('scrolled', scrolled);
+    logoDefault.style.display = scrolled ? 'none' : 'inline-block';
+    logoReverse.style.display = scrolled ? 'inline-block' : 'none';
+  }
+
+  window.addEventListener('scroll', updateNavState, { passive: true });
+  updateNavState();
+
+  toggler.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    toggler.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>

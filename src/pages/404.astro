@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Page Not Found | Epinio" description="The page you're looking for doesn't exist.">
+  <main class="not-found">
+    <h1>404</h1>
+    <p>Page not found.</p>
+    <a href="/">Go home</a>
+  </main>
+</Layout>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding: 120px 32px;
+  }
+
+  h1 {
+    font-size: 6rem;
+    margin: 0;
+    color: var(--epinio-primary-color);
+  }
+
+  p {
+    font-size: 1.25rem;
+    color: var(--epinio-muted-text-color);
+    margin: 16px 0 32px;
+  }
+
+  a {
+    color: var(--epinio-primary-color);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+import { EpinioCarousel } from './epinio-carousel.js';
+import '../styles/carousel-styles.css';
+
+const updates = [
+  {
+    eyebrow: 'New Release',
+    title: 'Epinio 1.14.0',
+    description:
+      'The latest Epinio release brings continued improvements to the application development engine for Kubernetes. Release notes will be available on docs.epinio.io once the documentation overhaul is complete.',
+    buttonText: 'View Docs',
+    buttonUrl: 'https://docs.epinio.io',
+  },
+  {
+    eyebrow: 'Early Access',
+    title: 'Epinio MCP Server',
+    description:
+      'Interact with your Epinio cluster using natural language. The Epinio MCP Server brings AI-native tooling to your deployment workflow — push apps, manage services, and inspect namespaces without leaving your AI assistant.',
+    buttonText: 'View on GitHub',
+    buttonUrl: 'https://github.com/epinio/mcp',
+  },
+  {
+    eyebrow: 'Extension',
+    title: 'Rancher Extension',
+    description:
+      'Manage Epinio applications directly from the Rancher dashboard. The Rancher Extension makes Epinio a first-class citizen in your Rancher environment — no context switching required.',
+    buttonText: 'View Extension',
+    buttonUrl: 'https://extensions.rancher.io/extensions/next/catalog',
+  },
+];
+---
+
+<section class="news-section">
+  <div class="page-container">
+    <div class="news-header">
+      <p class="news-eyebrow">What's New</p>
+      <h2 class="news-title">Latest from Epinio</h2>
+    </div>
+    <EpinioCarousel client:load items={updates} />
+  </div>
+</section>
+
+<style>
+  .news-section {
+    background-color: var(--epinio-dark-background-color);
+    padding: 80px 0 40px;
+  }
+
+  .news-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .news-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--epinio-accent-light);
+    margin: 0 0 10px;
+  }
+
+  .news-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--epinio-white-text-color);
+    margin: 0;
+  }
+</style>

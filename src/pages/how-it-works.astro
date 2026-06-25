@@ -1,0 +1,674 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getImage } from 'astro:assets';
+import heroBg from '../assets/images/epinio-background-hero.svg';
+
+const optimizedHero = await getImage({ src: heroBg, format: 'svg' });
+
+const title = 'How It Works — Epinio';
+const description =
+  'See how Epinio takes your application from source code to a live URL — and what happens inside your Kubernetes cluster.';
+---
+
+<Layout title={title} description={description}>
+  <main>
+
+    <!-- ── Hero / Persona Toggle ─────────────────────────────────── -->
+    <section
+      class="hiw-hero"
+      style={`background-image: url('${optimizedHero.src}')`}
+    >
+      <div class="page-container hiw-hero-inner">
+        <p class="hiw-eyebrow">How It Works</p>
+        <div class="persona-toggle" role="tablist" aria-label="Select your persona">
+          <button
+            id="btn-developer"
+            class="persona-btn persona-btn--active"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-developer"
+          >Developer</button>
+          <button
+            id="btn-operator"
+            class="persona-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-operator"
+          >Operator</button>
+        </div>
+        <h1 id="hiw-headline" class="hiw-headline">From your code to a live URL</h1>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         DEVELOPER PANEL
+    ══════════════════════════════════════════════════════════════ -->
+    <div id="panel-developer" class="persona-panel" role="tabpanel" aria-labelledby="btn-developer">
+
+      <!-- Stage 1 : Push from source ──────────────────────────── -->
+      <section class="stage stage--white">
+        <div class="page-container stage-row">
+          <div class="stage-copy">
+            <span class="stage-number">01</span>
+            <h2>Push from source</h2>
+            <p>
+              You wrote the app. Epinio handles the rest. One <code>epinio push</code> takes your
+              source code, archive, or container image and turns it into a running, routable
+              application. No Dockerfile to maintain, no pipeline to babysit, no YAML to hand-write.
+              Cloud Native Buildpacks detect your language and build a production image for you.
+            </p>
+          </div>
+          <div class="stage-graphic">
+            <svg viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Card 1: Your Code -->
+              <rect x="20" y="80" width="115" height="100" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <rect x="40" y="108" width="74" height="5" rx="2.5" fill="#0086FF" opacity="0.5"/>
+              <rect x="40" y="120" width="55" height="5" rx="2.5" fill="#0086FF" opacity="0.5"/>
+              <rect x="40" y="132" width="66" height="5" rx="2.5" fill="#0086FF" opacity="0.5"/>
+              <rect x="40" y="144" width="44" height="5" rx="2.5" fill="#0086FF" opacity="0.5"/>
+              <text x="77" y="205" text-anchor="middle" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Your code</text>
+
+              <!-- Arrow 1 -->
+              <line x1="140" y1="130" x2="177" y2="130" stroke="#9898B8" stroke-width="2" stroke-dasharray="4,3"/>
+              <polygon points="174,125 184,130 174,135" fill="#9898B8"/>
+
+              <!-- Card 2: epinio push -->
+              <rect x="184" y="80" width="112" height="100" rx="10" fill="#0086FF"/>
+              <rect x="198" y="98" width="84" height="48" rx="5" fill="rgba(0,0,0,0.22)"/>
+              <circle cx="209" cy="107" r="3" fill="rgba(255,255,255,0.4)"/>
+              <circle cx="219" cy="107" r="3" fill="rgba(255,255,255,0.4)"/>
+              <circle cx="229" cy="107" r="3" fill="rgba(255,255,255,0.4)"/>
+              <text x="240" y="128" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.85)" font-family="monospace,Courier">$ epinio push</text>
+              <rect x="203" y="135" width="28" height="3" rx="1.5" fill="rgba(255,255,255,0.45)"/>
+              <text x="240" y="205" text-anchor="middle" font-size="12" fill="white" font-weight="600" font-family="system-ui,sans-serif">epinio push</text>
+
+              <!-- Arrow 2 -->
+              <line x1="300" y1="130" x2="337" y2="130" stroke="#9898B8" stroke-width="2" stroke-dasharray="4,3"/>
+              <polygon points="334,125 344,130 334,135" fill="#9898B8"/>
+
+              <!-- Card 3: Live URL -->
+              <rect x="344" y="80" width="116" height="100" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <circle cx="402" cy="124" r="26" fill="none" stroke="#0086FF" stroke-width="2"/>
+              <ellipse cx="402" cy="124" rx="11" ry="26" fill="none" stroke="#0086FF" stroke-width="1.5"/>
+              <line x1="376" y1="124" x2="428" y2="124" stroke="#0086FF" stroke-width="1.5"/>
+              <line x1="379" y1="110" x2="425" y2="110" stroke="#0086FF" stroke-width="1" opacity="0.4"/>
+              <line x1="379" y1="138" x2="425" y2="138" stroke="#0086FF" stroke-width="1" opacity="0.4"/>
+              <text x="402" y="205" text-anchor="middle" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Live URL</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stage 2 : Bind what your app needs ──────────────────── -->
+      <section class="stage stage--gray">
+        <div class="page-container stage-row stage-row--reversed">
+          <div class="stage-copy">
+            <span class="stage-number">02</span>
+            <h2>Bind what your app needs</h2>
+            <p>
+              Apps rarely run alone. They need a database, microservices, a cache, an API key. With
+              Epinio you provision a service from the catalog and bind it to your app in one step.
+              Credentials and connection details are injected for you, securely, at runtime. Change a
+              binding and your app picks it up. No secrets pasted into config files.
+            </p>
+          </div>
+          <div class="stage-graphic">
+            <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Database (top) -->
+              <rect x="178" y="10" width="124" height="70" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <ellipse cx="222" cy="31" rx="18" ry="7" fill="none" stroke="#0086FF" stroke-width="1.5"/>
+              <rect x="204" y="31" width="36" height="20" fill="#EBF4FF"/>
+              <ellipse cx="222" cy="45" rx="18" ry="7" fill="none" stroke="#0086FF" stroke-width="1.5"/>
+              <rect x="204" y="45" width="36" height="10" fill="#EBF4FF"/>
+              <ellipse cx="222" cy="51" rx="18" ry="7" fill="none" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="270" y="50" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Database</text>
+
+              <!-- Connector: Database → App -->
+              <line x1="240" y1="80" x2="240" y2="112" stroke="#0086FF" stroke-width="1.5" stroke-dasharray="5,3"/>
+              <!-- Lock icon -->
+              <rect x="233" y="87" width="14" height="11" rx="2" fill="white" stroke="#0086FF" stroke-width="1.5"/>
+              <path d="M236 87 Q236 82 240 82 Q244 82 244 87" fill="none" stroke="#0086FF" stroke-width="1.5"/>
+              <circle cx="240" cy="93" r="2" fill="#0086FF"/>
+
+              <!-- App (center) -->
+              <rect x="170" y="112" width="140" height="78" rx="10" fill="#0086FF"/>
+              <rect x="194" y="128" width="22" height="22" rx="4" fill="rgba(255,255,255,0.27)"/>
+              <rect x="222" y="128" width="22" height="22" rx="4" fill="rgba(255,255,255,0.27)"/>
+              <rect x="194" y="154" width="22" height="22" rx="4" fill="rgba(255,255,255,0.27)"/>
+              <rect x="222" y="154" width="22" height="22" rx="4" fill="rgba(255,255,255,0.27)"/>
+              <text x="322" y="155" font-size="15" fill="white" font-weight="700" font-family="system-ui,sans-serif">Your App</text>
+
+              <!-- Connector: App → Cache -->
+              <line x1="188" y1="190" x2="118" y2="220" stroke="#0086FF" stroke-width="1.5" stroke-dasharray="5,3"/>
+              <!-- Connector: App → Config -->
+              <line x1="292" y1="190" x2="362" y2="220" stroke="#0086FF" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+              <!-- Cache (bottom-left) -->
+              <rect x="40" y="220" width="124" height="64" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <polygon points="98,232 90,252 98,250 92,268 110,246 100,248" fill="#0086FF"/>
+              <text x="122" y="256" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Cache</text>
+
+              <!-- Config (bottom-right) -->
+              <rect x="316" y="220" width="124" height="64" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <circle cx="358" cy="252" r="13" fill="none" stroke="#0086FF" stroke-width="2"/>
+              <circle cx="358" cy="252" r="5" fill="#0086FF"/>
+              <line x1="358" y1="236" x2="358" y2="232" stroke="#0086FF" stroke-width="3" stroke-linecap="round"/>
+              <line x1="358" y1="268" x2="358" y2="272" stroke="#0086FF" stroke-width="3" stroke-linecap="round"/>
+              <line x1="342" y1="252" x2="338" y2="252" stroke="#0086FF" stroke-width="3" stroke-linecap="round"/>
+              <line x1="374" y1="252" x2="378" y2="252" stroke="#0086FF" stroke-width="3" stroke-linecap="round"/>
+              <text x="380" y="256" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Config</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stage 3 : Your space, your apps ─────────────────────── -->
+      <section class="stage stage--white">
+        <div class="page-container stage-row">
+          <div class="stage-copy">
+            <span class="stage-number">03</span>
+            <h2>Your space, your apps</h2>
+            <p>
+              Working on three projects at once? Namespaces keep them apart. Your apps, services, and
+              configurations live inside a namespace that is yours to organize. You see what is in
+              your space and nothing you do collides with another team. Switch namespaces and you
+              switch context cleanly.
+            </p>
+          </div>
+          <div class="stage-graphic">
+            <svg viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Namespace A (active / blue) -->
+              <rect x="16" y="40" width="210" height="192" rx="12" fill="none" stroke="#0086FF" stroke-width="2" stroke-dasharray="8,4"/>
+              <rect x="24" y="29" width="116" height="22" rx="6" fill="#0086FF"/>
+              <text x="82" y="44" text-anchor="middle" font-size="11" fill="white" font-weight="600" font-family="system-ui,sans-serif">dev-team-a</text>
+              <!-- App tiles -->
+              <rect x="34" y="70" width="80" height="52" rx="7" fill="#badeff"/>
+              <text x="74" y="94" text-anchor="middle" font-size="10" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">frontend</text>
+              <rect x="124" y="70" width="80" height="52" rx="7" fill="#badeff"/>
+              <text x="164" y="94" text-anchor="middle" font-size="10" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">api</text>
+              <rect x="34" y="134" width="80" height="52" rx="7" fill="#EBF4FF" stroke="#0086FF" stroke-width="1"/>
+              <text x="74" y="158" text-anchor="middle" font-size="10" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">worker</text>
+              <rect x="124" y="134" width="80" height="52" rx="7" fill="#EBF4FF" stroke="#0086FF" stroke-width="1"/>
+              <text x="164" y="158" text-anchor="middle" font-size="10" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">db-svc</text>
+
+              <!-- Namespace B (muted) -->
+              <rect x="254" y="40" width="210" height="192" rx="12" fill="none" stroke="#C0C0D8" stroke-width="2" stroke-dasharray="8,4"/>
+              <rect x="262" y="29" width="116" height="22" rx="6" fill="#9898B8"/>
+              <text x="320" y="44" text-anchor="middle" font-size="11" fill="white" font-weight="600" font-family="system-ui,sans-serif">dev-team-b</text>
+              <rect x="272" y="70" width="80" height="52" rx="7" fill="#E0E0F0"/>
+              <text x="312" y="94" text-anchor="middle" font-size="10" fill="#5A5A82" font-weight="600" font-family="system-ui,sans-serif">app-1</text>
+              <rect x="362" y="70" width="80" height="52" rx="7" fill="#E0E0F0"/>
+              <text x="402" y="94" text-anchor="middle" font-size="10" fill="#5A5A82" font-weight="600" font-family="system-ui,sans-serif">app-2</text>
+              <rect x="272" y="134" width="170" height="52" rx="7" fill="#E0E0F0"/>
+              <text x="357" y="158" text-anchor="middle" font-size="10" fill="#5A5A82" font-weight="600" font-family="system-ui,sans-serif">backend</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stage 4 : Configurability ───────────────────────────── -->
+      <section class="stage stage--gray">
+        <div class="page-container stage-row stage-row--reversed">
+          <div class="stage-copy">
+            <span class="stage-number">04</span>
+            <h2>Configurability when you need it</h2>
+            <p>
+              The one-push experience is the starting point, not the limit. When your app needs more,
+              the controls are right there, and never in your way. Reach for as few or as many as you
+              like. A bare <code>epinio push</code> still just works.
+            </p>
+          </div>
+          <div class="stage-graphic">
+            <svg viewBox="0 0 480 286" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Row 1 -->
+              <rect x="20" y="20" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="86" y="46" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">manifest</text>
+              <text x="86" y="62" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">epinio.yml</text>
+
+              <rect x="174" y="20" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="240" y="46" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">Procfile</text>
+              <text x="240" y="62" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">process type</text>
+
+              <rect x="328" y="20" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="394" y="46" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">file ignore</text>
+              <text x="394" y="62" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">.epignore</text>
+
+              <!-- Row 2 -->
+              <rect x="20" y="100" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="86" y="126" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">builder</text>
+              <text x="86" y="142" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">image / CNB</text>
+
+              <rect x="174" y="100" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="240" y="126" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">routes</text>
+              <text x="240" y="142" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">custom domains</text>
+
+              <rect x="328" y="100" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="394" y="126" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">runtime</text>
+              <text x="394" y="142" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">env vars / scale</text>
+
+              <!-- Divider -->
+              <line x1="20" y1="186" x2="460" y2="186" stroke="#C0C0D8" stroke-width="1" stroke-dasharray="6,4"/>
+
+              <!-- epinio push pill -->
+              <rect x="112" y="202" width="256" height="52" rx="26" fill="#0086FF"/>
+              <text x="240" y="233" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="system-ui,sans-serif">epinio push</text>
+              <text x="240" y="274" text-anchor="middle" font-size="11" fill="#9898B8" font-family="system-ui,sans-serif">all options optional</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /panel-developer -->
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         OPERATOR PANEL (hidden by default)
+    ══════════════════════════════════════════════════════════════ -->
+    <div id="panel-operator" class="persona-panel" role="tabpanel" aria-labelledby="btn-operator" hidden>
+
+      <!-- Stage 1 : The push, behind the scenes ───────────────── -->
+      <section class="stage stage--white">
+        <div class="page-container stage-row">
+          <div class="stage-copy">
+            <span class="stage-number">01</span>
+            <h2>The push, behind the scenes</h2>
+            <p>
+              When a developer runs one command, Epinio orchestrates a full pipeline on your cluster.
+              The Epinio API server receives the upload, hands it to a staging build that runs Cloud
+              Native Buildpacks, pushes the resulting image to a registry, and rolls it out as a
+              standard Kubernetes Deployment, Service, and Ingress. Everything a developer skips,
+              Epinio does correctly, every time.
+            </p>
+          </div>
+          <div class="stage-graphic stage-graphic--tall">
+            <svg viewBox="0 0 360 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Developer command -->
+              <rect x="60" y="8" width="240" height="52" rx="10" fill="#1A1A2E"/>
+              <text x="180" y="29" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="monospace,Courier">Developer runs</text>
+              <text x="180" y="50" text-anchor="middle" font-size="13" fill="white" font-weight="700" font-family="monospace,Courier">$ epinio push</text>
+
+              <!-- Arrow -->
+              <line x1="180" y1="60" x2="180" y2="80" stroke="#9898B8" stroke-width="1.5" stroke-dasharray="4,3"/>
+              <polygon points="175,77 180,86 185,77" fill="#9898B8"/>
+
+              <!-- API Server -->
+              <rect x="60" y="86" width="240" height="52" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="180" y="109" text-anchor="middle" font-size="12" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">API Server</text>
+              <text x="180" y="127" text-anchor="middle" font-size="10" fill="#7070A0" font-family="system-ui,sans-serif">receives &amp; validates upload</text>
+
+              <!-- Arrow -->
+              <line x1="180" y1="138" x2="180" y2="158" stroke="#9898B8" stroke-width="1.5" stroke-dasharray="4,3"/>
+              <polygon points="175,155 180,164 185,155" fill="#9898B8"/>
+
+              <!-- Staging Job -->
+              <rect x="60" y="164" width="240" height="52" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="180" y="187" text-anchor="middle" font-size="12" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">Staging Job</text>
+              <text x="180" y="205" text-anchor="middle" font-size="10" fill="#7070A0" font-family="system-ui,sans-serif">Cloud Native Buildpacks</text>
+
+              <!-- Arrow -->
+              <line x1="180" y1="216" x2="180" y2="236" stroke="#9898B8" stroke-width="1.5" stroke-dasharray="4,3"/>
+              <polygon points="175,233 180,242 185,233" fill="#9898B8"/>
+
+              <!-- Container Registry -->
+              <rect x="60" y="242" width="240" height="52" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="180" y="265" text-anchor="middle" font-size="12" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">Container Registry</text>
+              <text x="180" y="283" text-anchor="middle" font-size="10" fill="#7070A0" font-family="system-ui,sans-serif">image push &amp; store</text>
+
+              <!-- Arrow -->
+              <line x1="180" y1="294" x2="180" y2="314" stroke="#9898B8" stroke-width="1.5" stroke-dasharray="4,3"/>
+              <polygon points="175,311 180,320 185,311" fill="#9898B8"/>
+
+              <!-- Deployment / Service / Ingress -->
+              <rect x="60" y="320" width="240" height="48" rx="8" fill="#0086FF"/>
+              <text x="180" y="340" text-anchor="middle" font-size="11" fill="white" font-weight="600" font-family="system-ui,sans-serif">Deployment</text>
+              <text x="180" y="358" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.75)" font-family="system-ui,sans-serif">Service · Ingress</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stage 2 : Native Kubernetes ─────────────────────────── -->
+      <section class="stage stage--gray">
+        <div class="page-container stage-row stage-row--reversed">
+          <div class="stage-copy">
+            <span class="stage-number">02</span>
+            <h2>Native Kubernetes, no lock-in surprises</h2>
+            <p>
+              Epinio does not replace Kubernetes, it rides on top of it. Apps become ordinary
+              Deployments. Routes become Ingresses. Secrets stay Secrets. Everything Epinio creates
+              is inspectable with <code>kubectl</code> and governed by the same RBAC, network
+              policies, and observability you already run. Epinio installs via Helm and sits
+              alongside your existing stack.
+            </p>
+          </div>
+          <div class="stage-graphic">
+            <svg viewBox="0 0 480 294" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Cluster boundary -->
+              <rect x="16" y="20" width="448" height="260" rx="16" fill="none" stroke="#0086FF" stroke-width="2"/>
+              <rect x="16" y="8" width="84" height="22" rx="6" fill="#0086FF"/>
+              <text x="58" y="23" text-anchor="middle" font-size="11" fill="white" font-weight="600" font-family="system-ui,sans-serif">Cluster</text>
+
+              <!-- Deployment -->
+              <rect x="44" y="50" width="176" height="80" rx="8" fill="white" stroke="#C0C0D8" stroke-width="1.5"/>
+              <rect x="44" y="50" width="176" height="26" rx="8" fill="#E0E0F0"/>
+              <rect x="44" y="64" width="176" height="12" rx="0" fill="#E0E0F0"/>
+              <text x="132" y="68" text-anchor="middle" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Deployment</text>
+              <text x="132" y="96" text-anchor="middle" font-size="10" fill="#7070A0" font-family="system-ui,sans-serif">your application pods</text>
+              <text x="132" y="115" text-anchor="middle" font-size="9" fill="#9898B8" font-family="monospace,Courier">kubectl get deploy</text>
+
+              <!-- Service -->
+              <rect x="260" y="50" width="176" height="80" rx="8" fill="white" stroke="#C0C0D8" stroke-width="1.5"/>
+              <rect x="260" y="50" width="176" height="26" rx="8" fill="#E0E0F0"/>
+              <rect x="260" y="64" width="176" height="12" rx="0" fill="#E0E0F0"/>
+              <text x="348" y="68" text-anchor="middle" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Service</text>
+              <text x="348" y="96" text-anchor="middle" font-size="10" fill="#7070A0" font-family="system-ui,sans-serif">cluster networking</text>
+              <text x="348" y="115" text-anchor="middle" font-size="9" fill="#9898B8" font-family="monospace,Courier">kubectl get svc</text>
+
+              <!-- Ingress -->
+              <rect x="44" y="152" width="176" height="80" rx="8" fill="white" stroke="#C0C0D8" stroke-width="1.5"/>
+              <rect x="44" y="152" width="176" height="26" rx="8" fill="#E0E0F0"/>
+              <rect x="44" y="166" width="176" height="12" rx="0" fill="#E0E0F0"/>
+              <text x="132" y="170" text-anchor="middle" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Ingress</text>
+              <text x="132" y="198" text-anchor="middle" font-size="10" fill="#7070A0" font-family="system-ui,sans-serif">routes &amp; TLS</text>
+              <text x="132" y="217" text-anchor="middle" font-size="9" fill="#9898B8" font-family="monospace,Courier">kubectl get ingress</text>
+
+              <!-- Secret -->
+              <rect x="260" y="152" width="176" height="80" rx="8" fill="white" stroke="#C0C0D8" stroke-width="1.5"/>
+              <rect x="260" y="152" width="176" height="26" rx="8" fill="#E0E0F0"/>
+              <rect x="260" y="166" width="176" height="12" rx="0" fill="#E0E0F0"/>
+              <text x="348" y="170" text-anchor="middle" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Secret</text>
+              <text x="348" y="198" text-anchor="middle" font-size="10" fill="#7070A0" font-family="system-ui,sans-serif">service credentials</text>
+              <text x="348" y="217" text-anchor="middle" font-size="9" fill="#9898B8" font-family="monospace,Courier">kubectl get secret</text>
+
+              <!-- Epinio orchestration badge -->
+              <rect x="164" y="250" width="152" height="20" rx="10" fill="#0086FF"/>
+              <text x="240" y="264" text-anchor="middle" font-size="10" fill="white" font-weight="600" font-family="system-ui,sans-serif">orchestrated by Epinio</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stage 3 : Configured to fit your platform ───────────── -->
+      <section class="stage stage--white">
+        <div class="page-container stage-row">
+          <div class="stage-copy">
+            <span class="stage-number">03</span>
+            <h2>Configured to fit your platform</h2>
+            <p>
+              Epinio adapts to the cluster you already operate. Bring your own ingress controller and
+              cert-manager, point at an external container registry or S3 store, choose your buildpack
+              builders, set resource limits and scaling, and control access with authentication and
+              namespaces. Sensible defaults to start, every knob available when you need it.
+            </p>
+          </div>
+          <div class="stage-graphic">
+            <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Networking & TLS -->
+              <rect x="16" y="16" width="216" height="120" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="124" y="38" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Networking &amp; TLS</text>
+              <rect x="30" y="50" width="188" height="16" rx="8" fill="white"/>
+              <text x="90" y="62" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">Ingress controller</text>
+              <rect x="184" y="53" width="28" height="10" rx="5" fill="#0086FF"/>
+              <circle cx="208" cy="58" r="5" fill="white"/>
+              <rect x="30" y="74" width="188" height="16" rx="8" fill="white"/>
+              <text x="90" y="86" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">cert-manager</text>
+              <rect x="184" y="77" width="28" height="10" rx="5" fill="#0086FF"/>
+              <circle cx="208" cy="82" r="5" fill="white"/>
+              <rect x="30" y="98" width="188" height="16" rx="8" fill="white"/>
+              <text x="90" y="110" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">custom domain</text>
+              <rect x="184" y="101" width="28" height="10" rx="5" fill="#C0C0D8"/>
+              <circle cx="188" cy="106" r="5" fill="white"/>
+
+              <!-- Storage -->
+              <rect x="248" y="16" width="216" height="96" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="356" y="38" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Storage</text>
+              <rect x="262" y="50" width="188" height="16" rx="8" fill="white"/>
+              <text x="322" y="62" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">Container registry</text>
+              <rect x="416" y="53" width="28" height="10" rx="5" fill="#0086FF"/>
+              <circle cx="440" cy="58" r="5" fill="white"/>
+              <rect x="262" y="74" width="188" height="16" rx="8" fill="white"/>
+              <text x="322" y="86" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">S3 artifact store</text>
+              <rect x="416" y="77" width="28" height="10" rx="5" fill="#C0C0D8"/>
+              <circle cx="420" cy="82" r="5" fill="white"/>
+
+              <!-- Builds -->
+              <rect x="16" y="156" width="136" height="96" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="84" y="178" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Builds</text>
+              <rect x="26" y="190" width="116" height="14" rx="7" fill="white"/>
+              <text x="56" y="200" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">CNB builder</text>
+              <rect x="26" y="212" width="116" height="14" rx="7" fill="white"/>
+              <text x="56" y="222" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">custom image</text>
+
+              <!-- Runtime -->
+              <rect x="172" y="156" width="136" height="96" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="240" y="178" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Runtime</text>
+              <rect x="182" y="190" width="116" height="14" rx="7" fill="white"/>
+              <text x="212" y="200" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">resource limits</text>
+              <rect x="182" y="212" width="116" height="14" rx="7" fill="white"/>
+              <text x="212" y="222" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">instance scaling</text>
+
+              <!-- Access -->
+              <rect x="328" y="156" width="136" height="96" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
+              <text x="396" y="178" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Access</text>
+              <rect x="338" y="190" width="116" height="14" rx="7" fill="white"/>
+              <text x="368" y="200" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">authentication</text>
+              <rect x="338" y="212" width="116" height="14" rx="7" fill="white"/>
+              <text x="368" y="222" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">namespaces / RBAC</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /panel-operator -->
+
+  </main>
+</Layout>
+
+
+<style>
+  /* ── Hero ───────────────────────────────────────────────────── */
+  .hiw-hero {
+    background-color: var(--epinio-dark-background-color);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    padding: 148px 0 80px;
+    text-align: center;
+    color: var(--epinio-white-text-color);
+  }
+
+  .hiw-hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .hiw-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--epinio-accent-light);
+    margin: 0;
+  }
+
+  .hiw-headline {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+    max-width: 640px;
+  }
+
+  /* ── Persona Toggle ─────────────────────────────────────────── */
+  .persona-toggle {
+    display: inline-flex;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .persona-btn {
+    background: none;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 28px;
+    font-family: var(--epinio-font-family);
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .persona-btn--active,
+  .persona-btn:hover {
+    background-color: var(--epinio-primary-color);
+    color: #ffffff;
+  }
+
+  /* ── Stages ─────────────────────────────────────────────────── */
+  .stage {
+    padding: 80px 0;
+  }
+
+  .stage--white {
+    background-color: var(--epinio-background-color);
+  }
+
+  .stage--gray {
+    background-color: var(--epinio-secondary-background-color);
+  }
+
+  .stage-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .stage-row--reversed .stage-copy {
+    order: 2;
+  }
+
+  .stage-row--reversed .stage-graphic {
+    order: 1;
+  }
+
+  /* ── Stage copy ─────────────────────────────────────────────── */
+  .stage-number {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--epinio-primary-color);
+    margin-bottom: 12px;
+  }
+
+  .stage-copy h2 {
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    font-weight: 600;
+    color: var(--epinio-primary-dark);
+    margin: 0 0 20px;
+    line-height: 1.2;
+  }
+
+  .stage-copy p {
+    font-size: 1rem;
+    color: var(--epinio-accent-color);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .stage-copy code {
+    background-color: var(--epinio-grayscale-100);
+    color: var(--epinio-primary-dark);
+    font-size: 0.9em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
+  /* ── Stage graphic ──────────────────────────────────────────── */
+  .stage-graphic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stage-graphic svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .stage-graphic--tall svg {
+    max-width: 340px;
+  }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .stage-row,
+    .stage-row--reversed {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .stage-row--reversed .stage-copy {
+      order: 1;
+    }
+
+    .stage-row--reversed .stage-graphic {
+      order: 2;
+    }
+
+    .stage {
+      padding: 56px 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hiw-hero {
+      padding: 128px 0 60px;
+    }
+
+    .persona-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+  }
+</style>
+
+
+<script>
+  const btnDev  = document.getElementById('btn-developer') as HTMLButtonElement;
+  const btnOp   = document.getElementById('btn-operator')  as HTMLButtonElement;
+  const panelDev = document.getElementById('panel-developer') as HTMLElement;
+  const panelOp  = document.getElementById('panel-operator')  as HTMLElement;
+  const headline = document.getElementById('hiw-headline')    as HTMLElement;
+
+  function activate(persona: 'developer' | 'operator') {
+    const isDev = persona === 'developer';
+
+    btnDev.classList.toggle('persona-btn--active', isDev);
+    btnDev.setAttribute('aria-selected', String(isDev));
+    btnOp.classList.toggle('persona-btn--active', !isDev);
+    btnOp.setAttribute('aria-selected', String(!isDev));
+
+    if (isDev) {
+      panelDev.removeAttribute('hidden');
+      panelOp.setAttribute('hidden', '');
+      headline.textContent = 'From your code to a live URL';
+    } else {
+      panelOp.removeAttribute('hidden');
+      panelDev.setAttribute('hidden', '');
+      headline.textContent = 'You Define How It Works';
+    }
+  }
+
+  btnDev.addEventListener('click', () => activate('developer'));
+  btnOp.addEventListener('click',  () => activate('operator'));
+</script>
