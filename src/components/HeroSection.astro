@@ -1,0 +1,113 @@
+---
+interface Props {
+  backgroundImage: string;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+}
+
+const {
+  backgroundImage,
+  title,
+  subtitle,
+  description,
+  heroImage,
+  heroImageAlt = '',
+} = Astro.props;
+---
+
+<section class="hero" style={`background-image: url('${backgroundImage}')`}>
+  <div class="page-container hero-layout">
+    <div class="hero-inner">
+      <h1>{title}</h1>
+      {subtitle && <h2 class="hero-subtitle">{subtitle}</h2>}
+      {description && <p class="hero-description">{description}</p>}
+      <div class="hero-actions">
+        <slot name="actions" />
+      </div>
+    </div>
+    {heroImage && (
+      <div class="hero-image">
+        <img src={heroImage} alt={heroImageAlt} />
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero {
+    background-color: var(--epinio-dark-background-color);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    color: var(--epinio-white-text-color);
+    padding: 100px 0;
+  }
+
+  .hero-layout {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .hero-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-image {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    margin: 0 0 24px;
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--epinio-accent-light);
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 0 0 8px;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    color: var(--epinio-accent-light);
+    line-height: 1.5;
+    font-weight: 300;
+    margin: 0 0 28px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero-layout {
+      flex-direction: column;
+    }
+
+    .hero-image {
+      flex: unset;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+</style>

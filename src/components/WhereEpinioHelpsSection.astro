@@ -1,0 +1,155 @@
+---
+import { getImage } from 'astro:assets';
+import pushFromSource from '../assets/images/push-from-source.png';
+import serviceBinding from '../assets/images/service-binding.png';
+import application from '../assets/images/application.png';
+import namespace from '../assets/images/namespace.png';
+
+const imgPush = await getImage({ src: pushFromSource, format: 'png' });
+const imgService = await getImage({ src: serviceBinding, format: 'png' });
+const imgApp = await getImage({ src: application, format: 'png' });
+const imgNamespace = await getImage({ src: namespace, format: 'png' });
+
+const features = [
+  {
+    title: 'Push from Source',
+    description:
+      "Utilize your application's Git repository, archive, or container image to deploy with just a few clicks. Epinio enables you to add your Git repository and choose the specific branch and commit you wish to build. There's no longer a need to set up complex continuous delivery pipelines to deliver your application to users.",
+    image: imgPush.src,
+    alt: 'Epinio Push from source',
+    imageRight: true,
+  },
+  {
+    title: 'Service Binding',
+    description:
+      'With the Epinio Service Catalog, you can select from a variety of options, including popular database types like MySQL and MongoDB, to seamlessly integrate essential services into your application. This approach not only simplifies the process but also ensures that the services will work as intended upon deployment.',
+    image: imgService.src,
+    alt: 'Epinio Service Binding',
+    imageRight: false,
+  },
+  {
+    title: 'Application Management',
+    description:
+      'Monitor the status of your applications, scale instances as needed, configure various settings, and deploy new versions—all directly from the Epinio platform. This streamlined approach empowers you to manage your applications efficiently, ensuring that you can respond quickly to changing demands.',
+    image: imgApp.src,
+    alt: 'Epinio Application Management',
+    imageRight: true,
+  },
+  {
+    title: 'Namespace Management',
+    description:
+      'Effortlessly add and remove namespaces directly from the Epinio platform to effectively organize your applications within the cluster. This functionality allows you to create a structured environment, making it easier to manage and isolate different applications or services.',
+    image: imgNamespace.src,
+    alt: 'Epinio Namespace Management',
+    imageRight: false,
+  },
+];
+---
+
+<section class="helps-section">
+  <div class="page-container">
+    <div class="helps-header">
+      <h2 class="section-title">Where Epinio Helps</h2>
+      <p class="section-subtitle">
+        Epinio abstracts away the complexity of Kubernetes so you can get back to writing code.
+        Apps are launched with a single command, eliminating complex CD pipelines and YAML files.
+        It's like having your own PaaS solution that you can control!
+      </p>
+    </div>
+
+    {features.map((feature) => (
+      <div class={`feature-row ${feature.imageRight ? '' : 'feature-row--reversed'}`}>
+        <div class="feature-text">
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+        <div class="feature-image">
+          <img src={feature.image} alt={feature.alt} />
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .helps-section {
+    background-color: var(--epinio-secondary-background-color);
+    padding: 80px 0;
+  }
+
+  .helps-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 72px;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--epinio-primary-dark);
+    margin: 0 0 16px;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: var(--epinio-accent-color);
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 0 0 8px;
+  }
+
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: center;
+    padding: 48px 0;
+  }
+
+  .feature-row--reversed {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .feature-row--reversed .feature-text {
+    order: 2;
+  }
+
+  .feature-row--reversed .feature-image {
+    order: 1;
+  }
+
+  .feature-text h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--epinio-primary-dark);
+    margin: 0 0 16px;
+  }
+
+  .feature-text p {
+    font-size: 1rem;
+    color: var(--epinio-accent-color);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .feature-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .feature-row,
+    .feature-row--reversed {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .feature-row--reversed .feature-text {
+      order: 1;
+    }
+
+    .feature-row--reversed .feature-image {
+      order: 2;
+    }
+  }
+</style>

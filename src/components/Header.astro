@@ -1,0 +1,469 @@
+---
+import { navItems } from "../assets/data/nav-items";
+import logoDefault from "../assets/images/logo-epinio-new.svg";
+import logoReverse from "../assets/images/logo-epinio-new-reverse.svg";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<style>
+  #sectionsNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 25px 0 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  #sectionsNav.scrolled {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    padding: 10px 0;
+  }
+
+  .nav-container {
+    max-width: var(--epinio-content-max-width);
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo */
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .navbar-brand img {
+    width: 150px;
+    height: auto;
+    display: block;
+  }
+
+  .nav-logo-default { display: inline-block; }
+  .nav-logo-reverse { display: none; }
+
+  /* Nav links */
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Bottom-border accent on hover/active (krum-style) */
+  .nav-link-inner {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-link:hover .nav-link-inner,
+  .nav-item:hover > .nav-link .nav-link-inner,
+  .nav-item.open > .nav-link .nav-link-inner {
+    border-bottom-color: var(--epinio-primary-color);
+    color: var(--epinio-primary-color);
+  }
+
+  #sectionsNav.scrolled .nav-link {
+    color: #444466;
+  }
+
+  .chevron-icon {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .nav-item:hover .chevron-icon,
+  .nav-item.open .chevron-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown panel — dark to match the unscrolled nav */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 190px;
+    background-color: var(--epinio-dark-background-color);
+    border-radius: 0 0 8px 8px;
+    padding: 8px 0 12px;
+    list-style: none;
+    margin: 0;
+    z-index: 200;
+  }
+
+  /* When scrolled the nav is white — switch panel to white too */
+  #sectionsNav.scrolled .dropdown-menu {
+    background-color: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+  }
+
+  .nav-item:hover .dropdown-menu,
+  .nav-item.open .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    color: var(--epinio-muted-white-text-color);
+    text-decoration: none;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .dropdown-item:hover {
+    color: var(--epinio-primary-color);
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  #sectionsNav.scrolled .dropdown-item {
+    color: #444466;
+  }
+
+  #sectionsNav.scrolled .dropdown-item:hover {
+    color: var(--epinio-primary-color);
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  .external-icon {
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  /* Mobile toggler */
+  .navbar-toggler {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .navbar-toggler-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  }
+
+  #sectionsNav.scrolled .navbar-toggler-icon {
+    background-color: #444466;
+  }
+
+  /* When the mobile menu is open, lock the nav bar to a solid dark background */
+  #sectionsNav.menu-open {
+    background-color: var(--epinio-dark-background-color);
+    box-shadow: none;
+    padding: 10px 0;
+  }
+
+  #sectionsNav.menu-open .navbar-toggler-icon {
+    background-color: #ffffff;
+  }
+
+  /* Hamburger → X animation */
+  #sectionsNav.menu-open .navbar-toggler-icon:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  #sectionsNav.menu-open .navbar-toggler-icon:nth-child(2) {
+    opacity: 0;
+  }
+  #sectionsNav.menu-open .navbar-toggler-icon:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .navbar-collapse {
+    display: flex;
+  }
+
+  @media (max-width: 991px) {
+    /* Fix nav height on mobile so the overlay top aligns correctly */
+    #sectionsNav {
+      padding: 10px 0;
+    }
+
+    #sectionsNav.scrolled {
+      padding: 10px 0;
+    }
+
+    .navbar-toggler {
+      display: flex;
+    }
+
+    .navbar-collapse {
+      display: none;
+      position: fixed;
+      top: 59px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ffffff;
+      overflow-y: auto;
+      flex-direction: column;
+    }
+
+    .navbar-collapse.open {
+      display: flex;
+    }
+
+    .navbar-nav {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 0;
+    }
+
+    /* Standard link rows — generous tap targets */
+    .nav-link {
+      color: var(--epinio-primary-text-color);
+      width: 100%;
+      min-height: 56px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--epinio-grayscale-200);
+      font-size: 15px;
+      font-weight: 600;
+      box-sizing: border-box;
+    }
+
+    .nav-link .nav-link-inner {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--epinio-primary-color);
+      background-color: var(--epinio-grayscale-50);
+    }
+
+    .nav-link:hover .nav-link-inner {
+      border-bottom: none;
+      color: inherit;
+    }
+
+    /* "Resources" becomes a static section label — not a toggle */
+    .dropdown-toggle {
+      pointer-events: none;
+      min-height: 36px;
+      padding-top: 16px;
+      color: var(--epinio-grayscale-500);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      border-bottom: none;
+    }
+
+    .dropdown-toggle .nav-link-inner {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    /* Hide the chevron — not needed when children are always visible */
+    .chevron-icon {
+      display: none;
+    }
+
+    /* Children always visible, tree-down style */
+    .dropdown-menu {
+      display: block;
+      position: static;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      background-color: transparent;
+      width: 100%;
+    }
+
+    .dropdown-item {
+      color: var(--epinio-primary-text-color);
+      min-height: 56px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--epinio-grayscale-200);
+      font-size: 15px;
+      font-weight: 600;
+      background-color: transparent;
+      white-space: normal;
+    }
+
+    .dropdown-item:hover {
+      color: var(--epinio-primary-color);
+      background-color: var(--epinio-grayscale-50);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .nav-container {
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<nav id="sectionsNav" aria-label="Main navigation">
+  <div class="nav-container">
+    <a class="navbar-brand" href="/epinio-web-astro">
+      <img class="nav-logo-default" src={logoDefault.src} alt="Epinio" width="150" height="39" />
+      <img class="nav-logo-reverse" src={logoReverse.src} alt="Epinio" width="150" height="39" />
+    </a>
+
+    <button class="navbar-toggler" id="navToggler" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse" id="navMenu">
+      <ul class="navbar-nav">
+        {navItems.map(item => (
+          <li class="nav-item">
+            {item.children ? (
+              <>
+                <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                  <span class="nav-link-inner">
+                    {item.title}
+                    <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  {item.children.map(child => (
+                    <li role="none">
+                      <a
+                        class="dropdown-item"
+                        href={child.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        role="menuitem"
+                      >
+                        {child.title}
+                        <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/>
+                          <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a
+                class="nav-link"
+                href={item.url}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+              >
+                <span class="nav-link-inner">{item.title}</span>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById('sectionsNav');
+  const toggler = document.getElementById('navToggler');
+  const menu = document.getElementById('navMenu');
+  const logoDefault = document.querySelector('.nav-logo-default') as HTMLElement;
+  const logoReverse = document.querySelector('.nav-logo-reverse') as HTMLElement;
+  const SCROLL_THRESHOLD = 100;
+
+  function updateNavState() {
+    const scrolled = window.scrollY >= SCROLL_THRESHOLD;
+    const menuOpen = menu.classList.contains('open');
+    nav.classList.toggle('scrolled', scrolled);
+    // When the mobile menu is open, always show the light logo so it's visible
+    // against the dark nav bar background
+    const showDark = scrolled && !menuOpen;
+    logoDefault.style.display = showDark ? 'none' : 'inline-block';
+    logoReverse.style.display = showDark ? 'inline-block' : 'none';
+  }
+
+  window.addEventListener('scroll', updateNavState, { passive: true });
+  updateNavState();
+
+  toggler.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    toggler.setAttribute('aria-expanded', String(isOpen));
+    nav.classList.toggle('menu-open', isOpen);
+    updateNavState();
+  });
+
+  // Desktop only: dropdown toggle and click-outside dismiss
+  const isMobile = () => window.innerWidth <= 991;
+
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (isMobile()) return;
+      const item = (e.currentTarget as HTMLElement).closest('.nav-item');
+      const isOpen = item.classList.toggle('open');
+      (e.currentTarget as HTMLElement).setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (isMobile()) return;
+    document.querySelectorAll('.nav-item.open').forEach(item => {
+      if (!item.contains(e.target as Node)) {
+        item.classList.remove('open');
+        item.querySelector('.dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>

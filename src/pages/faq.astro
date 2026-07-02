@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getImage } from 'astro:assets';
+import heroBg from '../assets/images/epinio-background-hero.svg';
+
+const optimizedHero = await getImage({ src: heroBg, format: 'svg' });
+
+const title = 'Frequently Asked Questions';
+const description =
+  'Answers to common questions about Epinio';
+---
+
+<Layout title={title} description={description}>
+  <main>
+
+    <!-- Hero -->
+    <section
+      class="faq-hero"
+      style={`background-image: url('${optimizedHero.src}')`}
+    >
+      <div class="page-container faq-hero-inner">
+        <p class="faq-eyebrow">FAQ</p>
+        <h1 class="faq-headline">Frequently Asked Questions</h1>
+        <p class="faq-subline">
+          Everything you need to know about Epinio and getting started.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ accordion -->
+    <section class="faq-section">
+      <div class="page-container faq-list">
+
+        <faq-item
+          question="What is Epinio?"
+          answer="Epinio is an open-source application platform that simplifies how teams build, deploy, and manage applications on Kubernetes. It provides a developer-friendly workflow so you can focus on writing code instead of managing complex infrastructure."
+        ></faq-item>
+
+        <faq-item
+          question="How does Epinio help teams deploy applications?"
+          answer="Epinio streamlines the deployment process by allowing you to push applications from source code, containers, or archives. It automates much of the underlying Kubernetes complexity, making it faster and easier to get applications running in your cluster."
+        ></faq-item>
+
+        <faq-item
+          question="Can Epinio integrate with databases and other services?"
+          answer="Yes. Epinio includes a service catalog that allows you to bind applications to common services like databases and other backing services. This makes it easy to connect your app to the resources it needs without complex configuration."
+        ></faq-item>
+
+        <faq-item
+          question="Can I customize or extend Epinio?"
+          answer="Absolutely. Since Epinio is open source, you can fork the repository, submit pull requests, or build custom extensions to meet your needs. This gives teams full flexibility and control over how they use the platform."
+        ></faq-item>
+
+        <faq-item
+          question="Is Epinio actively maintained?"
+          answer="Epinio is continuously improved by its community and contributors. Updates help keep the platform aligned with modern Kubernetes practices, security standards, and developer needs."
+        ></faq-item>
+
+        <faq-item
+          question="Is there support for Epinio?"
+          answer="If your team needs guidance with setup, customization, or best practices, commercial support options are available. <a href='https://krum.io/products/epinio' target='_blank'>Krumware</a> provides professional services and support to help organizations successfully deploy and operate Epinio."
+        ></faq-item>
+
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script>
+  import '../components/epinio-faq.js';
+</script>
+
+<style>
+  /* Hero */
+  .faq-hero {
+    background-color: var(--epinio-dark-background-color);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    padding: 148px 0 80px;
+    text-align: center;
+    color: var(--epinio-white-text-color);
+  }
+
+  .faq-hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--epinio-accent-light);
+    margin: 0;
+  }
+
+  .faq-headline {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+    max-width: 640px;
+  }
+
+  .faq-subline {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  /* FAQ list */
+  .faq-section {
+    background-color: var(--epinio-background-color);
+    padding: 80px 0;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* First item gets a top border to close the container visually */
+  .faq-list faq-item:first-child {
+    border-top: 1px solid var(--epinio-grayscale-200);
+  }
+
+  @media (max-width: 600px) {
+    .faq-hero {
+      padding: 128px 0 60px;
+    }
+
+    .faq-section {
+      padding: 56px 0;
+    }
+  }
+</style>

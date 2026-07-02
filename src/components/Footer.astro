@@ -1,0 +1,75 @@
+---
+import { footerItems } from "../assets/data/nav-items";
+import logoDefault from "../assets/images/logo-epinio-new.svg";
+---
+
+
+<style>
+  footer {
+    background-color: var(--epinio-accent-dark);
+    color: var(--epinio-muted-white-text-color);
+    padding: 40px 32px;
+  }
+
+  .footer-inner {
+    max-width: var(--epinio-content-max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--epinio-white-text-color);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-links a {
+    color: var(--epinio-muted-white-text-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.15s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--epinio-white-text-color);
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    margin-top: 24px;
+    text-align: center;
+    color: var(--epinio-white-text-color);
+  }
+</style>
+
+<footer>
+  <div class="footer-inner">
+    <img class="nav-logo-default" src={logoDefault.src} alt="Epinio" width="150" height="39" />
+    <ul class="footer-links">
+      {footerItems.map(item => (
+        <li>
+          <a
+            href={item.url}
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
+          >
+            {item.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <p class="footer-copy">&copy; {new Date().getFullYear()} Epinio. All rights reserved.</p>
+</footer>
