@@ -1,12 +1,12 @@
 export const navItems = [
   {
     title: "How It Works",
-    url: "/epinio-web-astro/how-it-works",
+    url: "/how-it-works",
     external: false,
   },
   {
     title: "FAQ",
-    url: "/epinio-web-astro/faq",
+    url: "/faq",
     external: false,
   },
   {
