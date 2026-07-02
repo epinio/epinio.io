@@ -36,7 +36,7 @@ const updates = [
       <p class="news-eyebrow">What's New</p>
       <h2 class="news-title">Latest from Epinio</h2>
     </div>
-    <EpinioCarousel client:load items={updates} />
+    <EpinioCarousel client:only="lit" items={updates} />
   </div>
 </section>
 
