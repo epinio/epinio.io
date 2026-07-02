@@ -1,107 +1,175 @@
 ---
 ---
 
-<section class="contact-section">
-  <div class="page-container">
-    <div class="contact-layout">
-      <div class="form-wrapper">
-        <trailhand-form-card shadow>
-          <trailhand-form-row columns="2">
-            <trailhand-text-input
-              name="name"
-              label="Name"
-              placeholder="Your name"
-              required
-            ></trailhand-text-input>
-            <trailhand-text-input
-              name="email"
-              type="email"
-              label="Email"
-              placeholder="email@address.com"
-              required
-            ></trailhand-text-input>
-          </trailhand-form-row>
 
-          <trailhand-form-row>
-            <trailhand-text-input
-              name="company"
-              label="Company"
-              placeholder="Your company"
-            ></trailhand-text-input>
-          </trailhand-form-row>
+  <section class="contact-section">
+    <div class="page-container">
+      <div class="contact-layout">
+        <div class="form-wrapper">
+          <form id="contact-form">
+            <trailhand-form-card shadow>
+              <trailhand-form-row columns="2">
+                <trailhand-text-input
+                  name="name"
+                  label="Name"
+                  placeholder="Your name"
+                  required
+                ></trailhand-text-input>
+                <trailhand-text-input
+                  name="email"
+                  type="email"
+                  label="Email"
+                  placeholder="email@address.com"
+                  required
+                ></trailhand-text-input>
+              </trailhand-form-row>
 
-          <trailhand-form-row>
-            <trailhand-text-area
-              name="message"
-              label="How can we help?"
-              placeholder="Tell us about your project..."
-              required
-              rows="5"
-            ></trailhand-text-area>
-          </trailhand-form-row>
-        </trailhand-form-card>
-      </div>
+              <trailhand-form-row>
+                <trailhand-text-input
+                  name="company"
+                  label="Company"
+                  placeholder="Your company"
+                ></trailhand-text-input>
+              </trailhand-form-row>
 
-      <div class="contact-header">
-        <h2 class="section-title">Get in Touch</h2>
-        <p class="section-subtitle">
-          Interested in Epinio support or professional services? We'd love to hear from you.
-        </p>
+              <trailhand-form-row>
+                <trailhand-text-area
+                  name="projectDescription"
+                  label="How can we help?"
+                  placeholder="Tell us about your project..."
+                  required
+                  rows="5"
+                ></trailhand-text-area>
+              </trailhand-form-row>
+            </trailhand-form-card>
+
+            <div class="form-actions">
+              <trailhand-button type="submit" variant="primary" size="large">
+                Let's get started
+              </trailhand-button>
+            </div>
+            <p class="form-error" hidden>Something went wrong. Please try again later.</p>
+          </form>
+
+          <div class="form-success" hidden>
+            <h3 class="section-title">Thank you!</h3>
+            <p class="section-subtitle">A representative will be in touch with you shortly.</p>
+          </div>
+        </div>
+
+        <div class="contact-header">
+          <h2 class="section-title">Get in Touch</h2>
+          <p class="section-subtitle">
+            Interested in Epinio support? We'd love to hear from you.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
-  import '@krumio/trailhand-ui/components/th-form-card';
-  import '@krumio/trailhand-ui/components/text-input';
-  import '@krumio/trailhand-ui/components/text-area';
-</script>
+  <script>
+    import '@krumio/trailhand-ui/components/th-form-card';
+    import '@krumio/trailhand-ui/components/text-input';
+    import '@krumio/trailhand-ui/components/text-area';
+    import '@krumio/trailhand-ui/components/button';
 
-<style>
-  .contact-section {
-    background-color: var(--epinio-secondary-background-color);
-    padding: 80px 0;
-  }
+    const API_URL = import.meta.env.PUBLIC_API_URL;
 
-  .contact-layout {
-    display: flex;
-    align-items: flex-start;
-    gap: 64px;
-  }
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const errorEl = form.querySelector('.form-error') as HTMLElement;
+    const successEl = document.querySelector('.form-success') as HTMLElement;
 
-  .contact-header {
-    flex: 0 0 300px;
-    padding-top: 8px;
-  }
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
 
-  .section-title {
-    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-    font-weight: 600;
-    color: var(--epinio-primary-dark);
-    margin: 0 0 16px;
-  }
+      // trailhand inputs are form-associated, so FormData picks them up by `name`
+      const payload: Record<string, unknown> = Object.fromEntries(new FormData(form));
 
-  .section-subtitle {
-    font-size: 1rem;
-    color: var(--epinio-grayscale-600);
-    margin: 0;
-    line-height: 1.6;
-  }
+      try {
+        const token = await getRecaptchaToken();
+        if (token) payload.recaptchaToken = token;
 
-  .form-wrapper {
-    flex: 1;
-    min-width: 0;
-  }
+        const res = await fetch(`${API_URL}/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error(`status ${res.status}`);
+        form.hidden = true;
+        successEl.hidden = false;
+      } catch (err) {
+        console.error(err);
+        errorEl.hidden = false;
+      }
+    });
 
-  @media (max-width: 768px) {
+    const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+
+    async function getRecaptchaToken(): Promise<string | null> {
+      const grecaptcha = (window as any).grecaptcha;
+      if (!RECAPTCHA_SITE_KEY || !grecaptcha) return null;
+      await new Promise<void>((r) => grecaptcha.ready(r));
+      return grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact_submit' });
+    }
+  </script>
+
+  <style>
+    .contact-section {
+      background-color: var(--epinio-secondary-background-color);
+      padding: 80px 0;
+    }
+
     .contact-layout {
-      flex-direction: column;
-      gap: 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 64px;
     }
 
     .contact-header {
-      flex: none;
+      flex: 0 0 300px;
+      padding-top: 8px;
     }
-  }
-</style>
+
+    .section-title {
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 600;
+      color: var(--epinio-primary-dark);
+      margin: 0 0 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--epinio-grayscale-600);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .form-wrapper {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 24px;
+    }
+
+    .form-error {
+      color: var(--th-input-border-invalid, #9f3a3a);
+      margin-top: 16px;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .contact-layout {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .contact-header {
+        flex: none;
+      }
+    }
+  </style>

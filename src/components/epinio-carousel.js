@@ -6,14 +6,13 @@ import carouselCSS from '../styles/carousel-styles.css?inline';
 
 export class EpinioCarousel extends LitElement {
     static properties = {
-        swiper: { type: Object },
-        items:  { type: Array },
+        items: { type: Array },
     };
 
     constructor() {
         super();
-        this.swiper = null;
-        this.items  = [];
+        this._swiper = null; // plain field — not reactive, never serialized by Astro hydration
+        this.items   = [];
     }
 
     static styles = [
@@ -67,13 +66,31 @@ export class EpinioCarousel extends LitElement {
         `
     ];
 
+    // Once Swiper owns the DOM, block Lit re-renders so they can't strip out
+    // Swiper's loop-mode clone slides and corrupt its internal state
+    shouldUpdate(changedProperties) {
+        if (this._swiper) return false;
+        return super.shouldUpdate(changedProperties);
+    }
+
     firstUpdated() {
+        this._tryInitSwiper();
+    }
+
+    updated(changedProperties) {
+        super.updated(changedProperties);
+        if (!this._swiper) this._tryInitSwiper();
+    }
+
+    _tryInitSwiper() {
+        if (this._swiper || this.items.length === 0) return;
+
         const container  = this.renderRoot.querySelector('.swiper');
         const nextButton = this.renderRoot.querySelector('.swiper-button-next');
         const prevButton = this.renderRoot.querySelector('.swiper-button-prev');
         const pagination = this.renderRoot.querySelector('.swiper-pagination');
 
-        this.swiper = new Swiper(container, {
+        this._swiper = new Swiper(container, {
             modules: [Navigation, Pagination, Autoplay],
             slidesPerView: 1,
             loop: true,

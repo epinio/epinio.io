@@ -2,8 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import { getImage } from 'astro:assets';
 import heroBg from '../assets/images/epinio-background-hero.svg';
+import namespaces from '../assets/images/namespaces.svg';
+import appBinding from '../assets/images/app-binding.svg';
+import configurability from '../assets/images/configurability.svg';
+import platformConfig from '../assets/images/platform-configuration.svg';
 
 const optimizedHero = await getImage({ src: heroBg, format: 'svg' });
+const optimizedNamespaces = await getImage({ src: namespaces, format: 'svg' });
+const optimizedAppBinding = await getImage({ src: appBinding, format: 'svg' });
+const optimizedConfigurability = await getImage({ src: configurability, format: 'svg' });
+const optimizedPlatformConfig = await getImage({ src: platformConfig, format: 'svg' });
 
 const title = 'How It Works — Epinio';
 const description =
@@ -114,51 +122,7 @@ const description =
             </p>
           </div>
           <div class="stage-graphic">
-            <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Database (top) -->
-              <rect x="178" y="10" width="124" height="70" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <ellipse cx="222" cy="31" rx="18" ry="7" fill="none" stroke="#0086FF" stroke-width="1.5"/>
-              <rect x="204" y="31" width="36" height="20" fill="#EBF4FF"/>
-              <ellipse cx="222" cy="45" rx="18" ry="7" fill="none" stroke="#0086FF" stroke-width="1.5"/>
-              <rect x="204" y="45" width="36" height="10" fill="#EBF4FF"/>
-              <ellipse cx="222" cy="51" rx="18" ry="7" fill="none" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="270" y="50" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Database</text>
-
-              <!-- Connector: Database → App -->
-              <line x1="240" y1="80" x2="240" y2="112" stroke="#0086FF" stroke-width="1.5" stroke-dasharray="5,3"/>
-              <!-- Lock icon -->
-              <rect x="233" y="87" width="14" height="11" rx="2" fill="white" stroke="#0086FF" stroke-width="1.5"/>
-              <path d="M236 87 Q236 82 240 82 Q244 82 244 87" fill="none" stroke="#0086FF" stroke-width="1.5"/>
-              <circle cx="240" cy="93" r="2" fill="#0086FF"/>
-
-              <!-- App (center) -->
-              <rect x="170" y="112" width="140" height="78" rx="10" fill="#0086FF"/>
-              <rect x="194" y="128" width="22" height="22" rx="4" fill="rgba(255,255,255,0.27)"/>
-              <rect x="222" y="128" width="22" height="22" rx="4" fill="rgba(255,255,255,0.27)"/>
-              <rect x="194" y="154" width="22" height="22" rx="4" fill="rgba(255,255,255,0.27)"/>
-              <rect x="222" y="154" width="22" height="22" rx="4" fill="rgba(255,255,255,0.27)"/>
-              <text x="322" y="155" font-size="15" fill="white" font-weight="700" font-family="system-ui,sans-serif">Your App</text>
-
-              <!-- Connector: App → Cache -->
-              <line x1="188" y1="190" x2="118" y2="220" stroke="#0086FF" stroke-width="1.5" stroke-dasharray="5,3"/>
-              <!-- Connector: App → Config -->
-              <line x1="292" y1="190" x2="362" y2="220" stroke="#0086FF" stroke-width="1.5" stroke-dasharray="5,3"/>
-
-              <!-- Cache (bottom-left) -->
-              <rect x="40" y="220" width="124" height="64" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <polygon points="98,232 90,252 98,250 92,268 110,246 100,248" fill="#0086FF"/>
-              <text x="122" y="256" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Cache</text>
-
-              <!-- Config (bottom-right) -->
-              <rect x="316" y="220" width="124" height="64" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <circle cx="358" cy="252" r="13" fill="none" stroke="#0086FF" stroke-width="2"/>
-              <circle cx="358" cy="252" r="5" fill="#0086FF"/>
-              <line x1="358" y1="236" x2="358" y2="232" stroke="#0086FF" stroke-width="3" stroke-linecap="round"/>
-              <line x1="358" y1="268" x2="358" y2="272" stroke="#0086FF" stroke-width="3" stroke-linecap="round"/>
-              <line x1="342" y1="252" x2="338" y2="252" stroke="#0086FF" stroke-width="3" stroke-linecap="round"/>
-              <line x1="374" y1="252" x2="378" y2="252" stroke="#0086FF" stroke-width="3" stroke-linecap="round"/>
-              <text x="380" y="256" font-size="12" fill="#1A4A76" font-weight="600" font-family="system-ui,sans-serif">Config</text>
-            </svg>
+            <img src={optimizedAppBinding.src} alt="Epinio service binding illustration" width="100%"/>
           </div>
         </div>
       </section>
@@ -177,32 +141,7 @@ const description =
             </p>
           </div>
           <div class="stage-graphic">
-            <svg viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Namespace A (active / blue) -->
-              <rect x="16" y="40" width="210" height="192" rx="12" fill="none" stroke="#0086FF" stroke-width="2" stroke-dasharray="8,4"/>
-              <rect x="24" y="29" width="116" height="22" rx="6" fill="#0086FF"/>
-              <text x="82" y="44" text-anchor="middle" font-size="11" fill="white" font-weight="600" font-family="system-ui,sans-serif">dev-team-a</text>
-              <!-- App tiles -->
-              <rect x="34" y="70" width="80" height="52" rx="7" fill="#badeff"/>
-              <text x="74" y="94" text-anchor="middle" font-size="10" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">frontend</text>
-              <rect x="124" y="70" width="80" height="52" rx="7" fill="#badeff"/>
-              <text x="164" y="94" text-anchor="middle" font-size="10" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">api</text>
-              <rect x="34" y="134" width="80" height="52" rx="7" fill="#EBF4FF" stroke="#0086FF" stroke-width="1"/>
-              <text x="74" y="158" text-anchor="middle" font-size="10" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">worker</text>
-              <rect x="124" y="134" width="80" height="52" rx="7" fill="#EBF4FF" stroke="#0086FF" stroke-width="1"/>
-              <text x="164" y="158" text-anchor="middle" font-size="10" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">db-svc</text>
-
-              <!-- Namespace B (muted) -->
-              <rect x="254" y="40" width="210" height="192" rx="12" fill="none" stroke="#C0C0D8" stroke-width="2" stroke-dasharray="8,4"/>
-              <rect x="262" y="29" width="116" height="22" rx="6" fill="#9898B8"/>
-              <text x="320" y="44" text-anchor="middle" font-size="11" fill="white" font-weight="600" font-family="system-ui,sans-serif">dev-team-b</text>
-              <rect x="272" y="70" width="80" height="52" rx="7" fill="#E0E0F0"/>
-              <text x="312" y="94" text-anchor="middle" font-size="10" fill="#5A5A82" font-weight="600" font-family="system-ui,sans-serif">app-1</text>
-              <rect x="362" y="70" width="80" height="52" rx="7" fill="#E0E0F0"/>
-              <text x="402" y="94" text-anchor="middle" font-size="10" fill="#5A5A82" font-weight="600" font-family="system-ui,sans-serif">app-2</text>
-              <rect x="272" y="134" width="170" height="52" rx="7" fill="#E0E0F0"/>
-              <text x="357" y="158" text-anchor="middle" font-size="10" fill="#5A5A82" font-weight="600" font-family="system-ui,sans-serif">backend</text>
-            </svg>
+            <img src={optimizedNamespaces.src} alt="Epinio namespaces illustration" width="100%"/>
           </div>
         </div>
       </section>
@@ -220,41 +159,7 @@ const description =
             </p>
           </div>
           <div class="stage-graphic">
-            <svg viewBox="0 0 480 286" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Row 1 -->
-              <rect x="20" y="20" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="86" y="46" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">manifest</text>
-              <text x="86" y="62" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">epinio.yml</text>
-
-              <rect x="174" y="20" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="240" y="46" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">Procfile</text>
-              <text x="240" y="62" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">process type</text>
-
-              <rect x="328" y="20" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="394" y="46" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">file ignore</text>
-              <text x="394" y="62" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">.epignore</text>
-
-              <!-- Row 2 -->
-              <rect x="20" y="100" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="86" y="126" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">builder</text>
-              <text x="86" y="142" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">image / CNB</text>
-
-              <rect x="174" y="100" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="240" y="126" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">routes</text>
-              <text x="240" y="142" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">custom domains</text>
-
-              <rect x="328" y="100" width="132" height="60" rx="8" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="394" y="126" text-anchor="middle" font-size="11" fill="#005580" font-weight="600" font-family="system-ui,sans-serif">runtime</text>
-              <text x="394" y="142" text-anchor="middle" font-size="9" fill="#7070A0" font-family="system-ui,sans-serif">env vars / scale</text>
-
-              <!-- Divider -->
-              <line x1="20" y1="186" x2="460" y2="186" stroke="#C0C0D8" stroke-width="1" stroke-dasharray="6,4"/>
-
-              <!-- epinio push pill -->
-              <rect x="112" y="202" width="256" height="52" rx="26" fill="#0086FF"/>
-              <text x="240" y="233" text-anchor="middle" font-size="14" fill="white" font-weight="700" font-family="system-ui,sans-serif">epinio push</text>
-              <text x="240" y="274" text-anchor="middle" font-size="11" fill="#9898B8" font-family="system-ui,sans-serif">all options optional</text>
-            </svg>
+            <img src={optimizedConfigurability.src} alt="Epinio configurability illustration" width="100%"/>
           </div>
         </div>
       </section>
@@ -403,59 +308,7 @@ const description =
             </p>
           </div>
           <div class="stage-graphic">
-            <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Networking & TLS -->
-              <rect x="16" y="16" width="216" height="120" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="124" y="38" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Networking &amp; TLS</text>
-              <rect x="30" y="50" width="188" height="16" rx="8" fill="white"/>
-              <text x="90" y="62" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">Ingress controller</text>
-              <rect x="184" y="53" width="28" height="10" rx="5" fill="#0086FF"/>
-              <circle cx="208" cy="58" r="5" fill="white"/>
-              <rect x="30" y="74" width="188" height="16" rx="8" fill="white"/>
-              <text x="90" y="86" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">cert-manager</text>
-              <rect x="184" y="77" width="28" height="10" rx="5" fill="#0086FF"/>
-              <circle cx="208" cy="82" r="5" fill="white"/>
-              <rect x="30" y="98" width="188" height="16" rx="8" fill="white"/>
-              <text x="90" y="110" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">custom domain</text>
-              <rect x="184" y="101" width="28" height="10" rx="5" fill="#C0C0D8"/>
-              <circle cx="188" cy="106" r="5" fill="white"/>
-
-              <!-- Storage -->
-              <rect x="248" y="16" width="216" height="96" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="356" y="38" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Storage</text>
-              <rect x="262" y="50" width="188" height="16" rx="8" fill="white"/>
-              <text x="322" y="62" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">Container registry</text>
-              <rect x="416" y="53" width="28" height="10" rx="5" fill="#0086FF"/>
-              <circle cx="440" cy="58" r="5" fill="white"/>
-              <rect x="262" y="74" width="188" height="16" rx="8" fill="white"/>
-              <text x="322" y="86" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">S3 artifact store</text>
-              <rect x="416" y="77" width="28" height="10" rx="5" fill="#C0C0D8"/>
-              <circle cx="420" cy="82" r="5" fill="white"/>
-
-              <!-- Builds -->
-              <rect x="16" y="156" width="136" height="96" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="84" y="178" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Builds</text>
-              <rect x="26" y="190" width="116" height="14" rx="7" fill="white"/>
-              <text x="56" y="200" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">CNB builder</text>
-              <rect x="26" y="212" width="116" height="14" rx="7" fill="white"/>
-              <text x="56" y="222" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">custom image</text>
-
-              <!-- Runtime -->
-              <rect x="172" y="156" width="136" height="96" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="240" y="178" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Runtime</text>
-              <rect x="182" y="190" width="116" height="14" rx="7" fill="white"/>
-              <text x="212" y="200" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">resource limits</text>
-              <rect x="182" y="212" width="116" height="14" rx="7" fill="white"/>
-              <text x="212" y="222" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">instance scaling</text>
-
-              <!-- Access -->
-              <rect x="328" y="156" width="136" height="96" rx="10" fill="#EBF4FF" stroke="#0086FF" stroke-width="1.5"/>
-              <text x="396" y="178" text-anchor="middle" font-size="11" fill="#005580" font-weight="700" font-family="system-ui,sans-serif">Access</text>
-              <rect x="338" y="190" width="116" height="14" rx="7" fill="white"/>
-              <text x="368" y="200" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">authentication</text>
-              <rect x="338" y="212" width="116" height="14" rx="7" fill="white"/>
-              <text x="368" y="222" font-size="9" fill="#5A5A82" font-family="system-ui,sans-serif">namespaces / RBAC</text>
-            </svg>
+            <img src={optimizedPlatformConfig.src} alt="Epinio platform configuration illustration" width="100%"/>
           </div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import heroBg from "../assets/images/epinio-background-hero.svg";
 import dashboardImage from "../assets/images/epinio-dashboard.png";
 import WhereEpinioHelpsSection from '../components/WhereEpinioHelpsSection.astro';
 import WhatsNewSection from '../components/WhatsNewSection.astro';
+import ContactSection from '../components/ContactSection.astro';
 
 const optimizedHero = await getImage({ src: heroBg, format: "svg" });
 const optimizedDashboard = await getImage({ src: dashboardImage, format: "png" });
@@ -33,9 +34,10 @@ const description = "Epinio is an Application Development Engine for Kubernetes.
         GitHub
       </a>
     </HeroSection>
+    <WhatsNewSection />
 
     <GetStartedSection sectionTitle="Get Started with Epinio">
-      <li slot="steps">Get access to a Kubernetes cluster. Install cert-manager if not already present.</li>
+      <li slot="steps">Get access to a Kubernetes cluster.</li>
       <li slot="steps">Install Epinio in the cluster using Helm.</li>
       <li slot="steps">Open the Web UI, or install the Epinio client for operation from a terminal.</li>
       <li slot="steps">Log into the cluster.</li>
@@ -56,8 +58,7 @@ const description = "Epinio is an Application Development Engine for Kubernetes.
       </trailhand-card>
     </GetStartedSection>
     <WhereEpinioHelpsSection />
-    <WhatsNewSection />
-
+    <ContactSection />
 </main>
 </Layout>
 

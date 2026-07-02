@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title, description, ogImage = '/images/og-image.png' } = Astro.props;
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
 
 <!doctype html>
@@ -25,7 +26,7 @@ const { title, description, ogImage = '/images/og-image.png' } = Astro.props;
     <meta property="og:description" content={description} />
     <meta name="image" property="og:image" content={ogImage} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/epinio-web-astro/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,6 +34,16 @@ const { title, description, ogImage = '/images/og-image.png' } = Astro.props;
       rel="stylesheet"
     />
     <!-- Analytics placeholder: add your analytics script here -->
+
+    <!-- reCAPTCHA v3 (essential, not gated by consent) -->
+    {recaptchaSiteKey && (
+      <script is:inline define:vars={{ recaptchaSiteKey }}>
+        var s = document.createElement('script');
+        s.src = "https://www.google.com/recaptcha/api.js?render=" + recaptchaSiteKey;
+        s.async = true;
+        document.head.appendChild(s);
+      </script>
+    )}
   </head>
   <body>
     <Header title={title} />
@@ -49,5 +60,12 @@ const { title, description, ogImage = '/images/og-image.png' } = Astro.props;
 
   body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  body > main {
+    flex: 1;
   }
 </style>
