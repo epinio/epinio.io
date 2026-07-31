@@ -1,8 +1,8 @@
 # Epinio.io website
 
-This website is built using [Hugo](https://gohugo.io/) and the Hugo Material theme.
+This website is built using [Astro](https://astro.build/).
 
-## Quick Start (Node.js)
+## Quick Start
 
 1. Install dependencies:
 
@@ -13,72 +13,63 @@ This website is built using [Hugo](https://gohugo.io/) and the Hugo Material the
 2. Start the development server:
 
    ```bash
-   npm run serve
+   npm run dev
    ```
 
-   This will start a local server at `http://localhost:1313` and watch for changes.
+   This will start a local server at `http://localhost:4321` and watch for changes.
 
-
-3. Build the site for production (minified static files):
+3. Build the site for production (static output):
 
    ```bash
    npm run build
    ```
 
-   This will generate a minified static site in the `public` directory.
+   This will generate the static site in the `dist` directory.
 
-4. Serve the built static site locally:
+4. Preview the built static site locally:
 
    ```bash
-   npm run build:serve
+   npm run preview
    ```
-
-   This will serve the contents of the `public` directory at `http://localhost:3000` (default port).
 
 ## Development
 
 ### Prerequisites
 
-- Install [Hugo](https://gohugo.io/getting-started/installing/)
-- Install [Node.js](https://nodejs.org/en/download/) (for building the theme)
+- Install [Node.js](https://nodejs.org/en/download/)
 
 ### Developing
 
 To develop locally, run the following command:
 
 ```bash
-hugo server
+npm run dev
 ```
 
-This will start a local server at `http://localhost:1313` and watch for changes in the content and theme files.
+This starts a local dev server at `http://localhost:4321` with hot module reloading for changes in `src/`.
+
+### Linting
+
+```bash
+npm run lint
+```
+
+Fix auto-fixable issues:
+
+```bash
+npm run lint:fix
+```
 
 ### Building
 
-To build the website for production, run the following command:
+To build the website for production, run:
 
 ```bash
-hugo
+npm run build
 ```
 
-This will generate the static files in the `public` directory.
-You can then commit the contents of the `public` directory.
+This generates the static files in the `dist` directory.
 
-## Testing
+## Deployment
 
-### To run all tests (including screenshot comparison):
-
-```bash
-npm test
-```
-
-Snapshots are stored in `test/__image_snapshots__` next to the test files. If the homepage changes visually, update the snapshots and review the diffs in `test/__image_snapshots__/__diff_output__`.
-
-### Visual Regression Testing (Screenshots)
-
-This project uses [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) and Puppeteer for visual regression testing of the homepage. Screenshots are generated when tests complete successfully and functionality is verified (the changes are confirmed).
-
-### To update/generate new screenshot snapshots:
-
-```bash
-npm run test:snap
-```
+Pushes to `main` are built and deployed to GitHub Pages automatically via [.github/workflows/deploy.yaml](.github/workflows/deploy.yaml), using the official [`withastro/action`](https://github.com/withastro/action).
