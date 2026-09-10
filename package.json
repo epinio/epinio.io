@@ -22,7 +22,7 @@
     "astro": "^5.16.6",
     "dayjs": "^1.11.19",
     "luxon": "^3.7.2",
-    "swiper": "^11.2.10"
+    "swiper": "^14.2.0"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^8.51.0",
