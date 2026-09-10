@@ -13,7 +13,7 @@
     "lint:fix": "eslint . --ext .js --fix"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/mdx": "^8.0.0",
     "@astrojs/node": "^9.5.1",
     "@astrojs/sitemap": "^3.6.0",
     "@krumio/trailhand-ui": "^1.9.26",
