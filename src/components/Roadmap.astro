@@ -21,12 +21,12 @@ const {
   subheading = "A look at what's shipping soon and what's further out.",
   stages = [
     {
-      label: "Q2 2026",
-      caption: "Foundations",
+      label: "Done",
+      caption: "Recently Shipped",
       items: [
         { title: "UI Refresh", description: "Enhanced and modernized user interface." },
         { title: "Documentation overhaul", description: "Revamped and comprehensive documentation for all features." },
-        { title: "Permissions", description: "Manage user access and roles within the platform." },
+        { title: "Permissions", description: "Expanded user permissions and clear documentation." },
         { title: "MCP Server", description: "Manage and configure your MCP server settings efficiently." },
         { title: "CRUD for Epinio CRDs", description: "Create, read, update, and delete Epinio custom resource definitions." },
         { title: "Gateway API Support", description: "Enable integration with external systems through the gateway API." },
@@ -34,25 +34,30 @@ const {
       ],
     },
     {
-      label: "Q3 2026",
-      caption: "Expansion",
+      label: "Now",
+      caption: "We're working on it",
       items: [
         { title: "Observability", description: "Gain improved insights into system performance and behavior." },
         { title: "OCI Image Metadata", description: "Access and manage metadata for OCI images." },
-        { title: "App Stack Deployments", description: "Deploy and manage multi-component applications." },
+
         { title: "Epinio Federation", description: "Enable management and coordination of multiple Epinio clusters." },
         { title: "External Service Binding", description: "Enable binding non-Epinio services to your applications." },
         { title: "Git Improvements", description: "Enhancements and optimizations for general workflow with Git." },
-        { title: "Buildpack Catalog", description: "Manage and utilize a catalog of buildpacks for application deployments." },
-        { title: "Build Image Rebasing", description: "Rebase application images to incorporate the latest base image updates without rebuild." },
+        { title: "App Build", description: "Use Epinio to build and store the image, then deploy later." },
+        { title: "Epinio Service Catalog", description: "Expanded default catalog that can detect or install needed resources." },
+        { title: "CI/CD Integrations", description: "Utilize Epinio to build and push your applications via pipelines with tighter integrations." },
       ],
     },
     {
-      label: "Q4 2026",
-      caption: "Platform",
+      label: "Soon",
+      caption: "In the near future",
       items: [
         { title: "Epinio Plugins", description: "Extend the platform with custom plugins to add new features and integrations." },
         { title: "Instance Manager", description: "Manage and oversee individual instances within the platform efficiently." },
+        { title: "Buildpack Catalog", description: "Manage and utilize a catalog of buildpacks for application deployments." },
+        { title: "Build Image Rebasing", description: "Rebase application images to incorporate the latest base image updates without rebuild." },
+        { title: "App Stack Deployments", description: "Deploy and manage multi-component applications." },
+        { title: "Full Trailhand Integration", description: "Epinio will utilize 100% trailhand.io components for faster development and better performance." },
       ],
     },
   ],
