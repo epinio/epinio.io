@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getImage } from 'astro:assets';
+import heroBg from '../assets/images/epinio-background-hero.svg';
+import Roadmap from '../components/Roadmap.astro';
+
+const optimizedHero = await getImage({ src: heroBg, format: 'svg' });
+
+const title = 'Roadmap — Epinio';
+const description =
+  'Discover the future plans and upcoming features for Epinio.';
+---
+
+<Layout title={title} description={description}>
+  <main>
+
+    <!-- ── Hero / Persona Toggle ─────────────────────────────────── -->
+    <section
+      class="roadmap-hero"
+      style={`background-image: url('${optimizedHero.src}')`}
+    >
+      <h1 id="roadmap-headline" class="roadmap-headline">Epinio Roadmap</h1>
+    </section>
+
+    <Roadmap />
+
+  </main>
+</Layout>
+
+
+<style>
+  /* ── Hero ───────────────────────────────────────────────────── */
+  .roadmap-hero {
+    background-color: var(--epinio-dark-background-color);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    padding: 148px 0 80px;
+    text-align: center;
+    color: var(--epinio-white-text-color);
+  }
+</style>
+

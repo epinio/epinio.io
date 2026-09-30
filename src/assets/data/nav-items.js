@@ -15,6 +15,11 @@ export const navItems = [
     external: true,
   },
   {
+    title: "Roadmap",
+    url: "/roadmap",
+    external: false,
+  },
+  {
     title: "Resources",
     children: [
       {

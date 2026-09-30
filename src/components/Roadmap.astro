@@ -1,0 +1,369 @@
+---
+export interface RoadmapItem {
+  title: string;
+  description: string;
+}
+
+export interface RoadmapStage {
+  label: string;
+  caption: string;
+  items: RoadmapItem[];
+}
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  stages?: RoadmapStage[];
+}
+
+const {
+  heading = "What we're building",
+  subheading = "A look at what's shipping soon and what's further out.",
+  stages = [
+    {
+      label: "Now",
+      caption: "We're working on it",
+      items: [
+        { title: "Observability (v1.14.3)", description: "Gain improved insights into system performance and behavior." },
+        { title: "App Build (v1.14.3)", description: "Use Epinio to build and store the image, then deploy later." },
+        { title: "CI/CD Integrations (v1.14.4)", description: "Utilize Epinio to build and push your applications via pipelines with tighter integrations." },
+        { title: "OCI Image Metadata (v1.15.0)", description: "Access and manage metadata for OCI images." },
+        { title: "Epinio Federation (v1.15.0)", description: "Enable management and coordination of multiple Epinio clusters." },
+        { title: "External Service Binding (v1.15.0)", description: "Enable binding non-Epinio services to your applications." },
+        { title: "Git Improvements (v1.15.0)", description: "Enhancements and optimizations for general workflow with Git." },
+        { title: "Epinio Service Catalog (v1.15.0)", description: "Expanded default catalog that can detect or install needed resources." },
+      ],
+    },
+    {
+      label: "Soon",
+      caption: "In the near future",
+      items: [
+        { title: "Epinio Plugins", description: "Extend the platform with custom plugins to add new features and integrations." },
+        { title: "Instance Manager", description: "Manage and oversee individual instances within the platform efficiently." },
+        { title: "Buildpack Catalog", description: "Manage and utilize a catalog of buildpacks for application deployments." },
+        { title: "Build Image Rebasing", description: "Rebase application images to incorporate the latest base image updates without rebuild." },
+        { title: "App Stack Deployments", description: "Deploy and manage multi-component applications." },
+        { title: "Full Trailhand Integration", description: "Epinio will utilize 100% trailhand.io components for faster development and better performance." },
+      ],
+    },
+    {
+      label: "Done",
+      caption: "Recently Shipped",
+      items: [
+        { title: "UI Refresh (v1.14.0)", description: "Enhanced and modernized user interface." },
+        { title: "Gateway API Support (v1.14.0)", description: "Enable integration with external systems through the gateway API." },
+        { title: "Documentation Overhaul (v1.14.1)", description: "Revamped and comprehensive documentation for all features." },
+        { title: "Permissions (v1.14.1)", description: "Expanded user permissions and clear documentation." },
+        { title: "MCP Server (v1.14.1)", description: "Manage and configure your MCP server settings efficiently." },
+        { title: "CRUD for Epinio CRDs (v1.14.1)", description: "Create, read, update, and delete Epinio custom resource definitions." },
+        { title: "Git Enterprise Support (v1.14.1)", description: "Enable seamless integration with Git Enterprise repositories." },
+      ],
+    },
+  ],
+}: Props = Astro.props;
+
+// Generate a unique ID for this roadmap instance to avoid ID collisions
+const uid = Math.random().toString(36).slice(2, 8);
+const stageId = (index: number) => `roadmap-${uid}-${index}`;
+---
+
+<section class="roadmap" data-roadmap={uid}>
+  <header class="roadmap__intro">
+    <h2 class="roadmap__heading">{heading}</h2>
+    <p class="roadmap__subheading">{subheading}</p>
+  </header>
+
+  <div class="roadmap__layout">
+    <nav class="roadmap__nav" aria-label="Roadmap stages">
+      <ul class="roadmap__nav-list">
+        {stages.map((stage, index) => (
+          <li>
+            <button
+              type="button"
+              class="roadmap__nav-item"
+              data-target={stageId(index)}
+              aria-current={index === 0 ? "true" : "false"}
+            >
+              {stage.label}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="roadmap__track">
+      {stages.map((stage, index) => (
+        <div class={`roadmap__stage${index === stages.length - 1 ? " roadmap__stage-last" : ""}`} id={stageId(index)}>
+          <div class="roadmap__rail" aria-hidden="true">
+            <span class="roadmap__dot"></span>
+            <span class="roadmap__line"></span>
+          </div>
+          <div class="roadmap__stage-body">
+            <div class="roadmap__stage-head">
+              <h3 class="roadmap__label">{stage.label}</h3>
+              <p class="roadmap__caption">{stage.caption}</p>
+            </div>
+
+            <ul class="roadmap__items">
+              {stage.items.map((item) => (
+                <trailhand-card
+                  class="roadmap__item"
+                  variant="info"
+                  card-title={item.title}
+                  subtitle={item.description}
+                >
+                </trailhand-card>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .roadmap {
+    --text: var(--epinio-primary-color);
+    --text-dim: var(--epinio-primary-dark);
+    --card: #fbfbfb;
+    --detail: #e4e4e4;
+    --accent: var(--epinio-primary-color);
+    background: transparent;
+    color: var(--text);
+    padding: 4rem 1.5rem;
+  }
+
+  .roadmap__intro {
+    max-width: 40rem;
+    margin: 0 auto 3rem;
+  }
+
+  .roadmap__heading {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .roadmap__subheading {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 34rem;
+  }
+
+  .roadmap__layout {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 3rem;
+    max-width: 54rem;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .roadmap__nav {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .roadmap__nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-left: 2px solid var(--detail);
+  }
+
+  .roadmap__nav-item {
+    all: unset;
+    cursor: pointer;
+    display: block;
+    padding: 0.4rem 0 0.4rem 1rem;
+    margin-left: -2px;
+    border-left: 2px solid transparent;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .roadmap__nav-item:hover {
+    color: var(--text);
+  }
+
+  .roadmap__nav-item[aria-current="true"] {
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  .roadmap__nav-item:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .roadmap__track {
+    min-width: 0;
+  }
+
+  .roadmap__stage {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    column-gap: 1.5rem;
+    scroll-margin-top: 6rem;
+  }
+
+  .roadmap__rail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .roadmap__dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-top: 0.4rem;
+    border-radius: 999px;
+    background: var(--detail);
+    flex-shrtext: 0;
+    z-index: 1;
+    transition: background 0.2s ease;
+  }
+
+  .roadmap__stage.is-active .roadmap__dot {
+    background: var(--accent);
+  }
+
+  .roadmap__line {
+    position: absolute;
+    top: 0.4rem;
+    bottom: -2rem;
+    width: 2px;
+    background: var(--detail);
+  }
+
+  .roadmap__stage-last .roadmap__line {
+    bottom: 0;
+  }
+
+  .roadmap__stage-body {
+    padding-bottom: 2.5rem;
+  }
+
+  .roadmap__stage-last .roadmap__stage-body {
+    padding-bottom: 0;
+  }
+
+  .roadmap__stage-head {
+    margin-bottom: 1rem;
+  }
+
+  .roadmap__label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+  }
+
+  .roadmap__caption {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .roadmap__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .roadmap__item {
+    background: var(--card);
+  }
+
+  @media (max-width: 700px) {
+    .roadmap__layout {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .roadmap__intro {
+      margin: 0;
+    }
+
+    .roadmap__nav {
+      position: static;
+      padding: 0.75rem 0;
+    }
+
+    .roadmap__nav-list {
+      flex-direction: row;
+      border-left: none;
+      gap: 1.25rem;
+    }
+
+    .roadmap__nav-item {
+      padding: 0.3rem 0;
+      border-left: none;
+      border-bottom: 2px solid transparent;
+    }
+
+    .roadmap__nav-item[aria-current="true"] {
+      border-bottom-color: var(--accent);
+    }
+  }
+</style>
+
+<script>
+  import '@krumio/trailhand-ui/components/th-card';
+  // Provide interactivity for each roadmap instance
+  document.querySelectorAll<HTMLElement>('.roadmap[data-roadmap]').forEach((root) => {
+    const navItems = Array.from(root.querySelectorAll<HTMLButtonElement>('.roadmap__nav-item'));
+    const stages = Array.from(root.querySelectorAll<HTMLElement>('.roadmap__stage'));
+
+    if (!navItems.length || !stages.length) return;
+
+    // Set active on nav item and stage based on id
+    const setActive = (id: string) => {
+      navItems.forEach((btn) => {
+        btn.setAttribute('aria-current', btn.dataset.target === id ? 'true' : 'false');
+      });
+      stages.forEach((stage) => {
+        stage.classList.toggle('is-active', stage.id === id);
+      });
+    };
+
+    // Click a nav item -> smooth-scroll to that stage
+    navItems.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.target && document.getElementById(btn.dataset.target);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Scroll the page -> highlight whichever stage is centered in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      {
+        // Use a slim horizontal band through the middle of the viewport as the "active" zone
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0,
+      }
+    );
+
+    stages.forEach((stage) => observer.observe(stage));
+  });
+</script>
