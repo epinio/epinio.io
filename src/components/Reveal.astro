@@ -1,0 +1,52 @@
+---
+/*
+ * Reusable scroll-into-view animation wrapper.
+ *
+ * Wrap any markup (a section, a heading, a client:load island) in <Reveal> and
+ * it animates as it scrolls into view. Runtime lives in src/scripts/reveal.js,
+ * motion values in src/styles/motion.css.
+ *
+ *   <Reveal animation="slide-left">...</Reveal>          slide in from left, once
+ *   <Reveal animation="slide-right">...</Reveal>         slide in from right, once
+ *   <Reveal animation="scroll-fade">...</Reveal>         fade in only, once
+ *
+ * All variants trigger once, when the element enters the viewport, and stay
+ * revealed (pass `repeat` to replay on every re-entry instead).
+ *
+ * Respects prefers-reduced-motion and degrades to fully-visible content with no JS.
+ */
+
+interface Props {
+  animation?: "slide-left" | "slide-right" | "scroll-fade";
+  /** wrapper tag */
+  as?: keyof HTMLElementTagNameMap;
+  /** seconds */
+  delay?: number;
+  /** viewport-intersection ratio that triggers the reveal */
+  amount?: number;
+  /** replay every time it re-enters (default: fire once) */
+  repeat?: boolean;
+  class?: string;
+}
+
+const {
+  animation = "slide-left",
+  as: Tag = "div",
+  delay = 0,
+  amount = 0.3,
+  repeat = false,
+  class: className,
+} = Astro.props;
+
+const attrs: Record<string, string> = { "data-reveal": animation };
+
+if (delay) attrs["data-reveal-delay"] = String(delay);
+if (amount !== 0.3) attrs["data-reveal-amount"] = String(amount);
+if (repeat) attrs["data-reveal-repeat"] = "";
+---
+
+<Tag class:list={["reveal", className]} {...attrs}><slot /></Tag>
+
+<script>
+  import "../scripts/reveal.js";
+</script>

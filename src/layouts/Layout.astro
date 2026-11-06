@@ -1,5 +1,6 @@
 ---
 import '../styles/epinio-styles.css';
+import '../styles/motion.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -17,6 +18,8 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Enables JS-gated styles (e.g. scroll-reveal resting state) so no-JS keeps content visible -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="application-name" content="Epinio" />

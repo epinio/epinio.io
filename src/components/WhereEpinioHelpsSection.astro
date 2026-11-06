@@ -1,5 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
+import Reveal from './Reveal.astro';
 import pushFromSource from '../assets/images/push-from-source.png';
 import serviceBinding from '../assets/images/service-binding.png';
 import application from '../assets/images/application.png';
@@ -48,25 +49,29 @@ const features = [
 
 <section class="helps-section">
   <div class="page-container">
-    <div class="helps-header">
-      <h2 class="section-title">Where Epinio Helps</h2>
-      <p class="section-subtitle">
-        Epinio abstracts away the complexity of Kubernetes so you can get back to writing code.
-        Apps are launched with a single command, eliminating complex CD pipelines and YAML files.
-        It's like having your own PaaS solution that you can control!
-      </p>
-    </div>
-
-    {features.map((feature) => (
-      <div class={`feature-row ${feature.imageRight ? '' : 'feature-row--reversed'}`}>
-        <div class="feature-text">
-          <h3>{feature.title}</h3>
-          <p>{feature.description}</p>
-        </div>
-        <div class="feature-image">
-          <img src={feature.image} alt={feature.alt} />
-        </div>
+    <Reveal animation="scroll-fade">
+      <div class="helps-header">
+        <h2 class="section-title">Where Epinio Helps</h2>
+        <p class="section-subtitle">
+          Epinio abstracts away the complexity of Kubernetes so you can get back to writing code.
+          Apps are launched with a single command, eliminating complex CD pipelines and YAML files.
+          It's like having your own PaaS solution that you can control!
+        </p>
       </div>
+    </Reveal>
+
+    {features.map((feature, i) => (
+      <Reveal animation={i % 2 === 0 ? 'slide-left' : 'slide-right'}>
+        <div class={`feature-row ${feature.imageRight ? '' : 'feature-row--reversed'}`}>
+          <div class="feature-text">
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+          <div class="feature-image">
+            <img src={feature.image} alt={feature.alt} />
+          </div>
+        </div>
+      </Reveal>
     ))}
   </div>
 </section>

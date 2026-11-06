@@ -56,7 +56,7 @@ const description =
 
       <!-- Stage 1 : Push from source ──────────────────────────── -->
       <section class="stage stage--white">
-        <div class="page-container stage-row">
+        <div class="page-container stage-row" data-reveal="slide-left">
           <div class="stage-copy">
             <span class="stage-number">01</span>
             <h2>Push from source</h2>
@@ -110,7 +110,7 @@ const description =
 
       <!-- Stage 2 : Bind what your app needs ──────────────────── -->
       <section class="stage stage--gray">
-        <div class="page-container stage-row stage-row--reversed">
+        <div class="page-container stage-row stage-row--reversed" data-reveal="slide-right">
           <div class="stage-copy">
             <span class="stage-number">02</span>
             <h2>Bind what your app needs</h2>
@@ -129,7 +129,7 @@ const description =
 
       <!-- Stage 3 : Your space, your apps ─────────────────────── -->
       <section class="stage stage--white">
-        <div class="page-container stage-row">
+        <div class="page-container stage-row" data-reveal="slide-left">
           <div class="stage-copy">
             <span class="stage-number">03</span>
             <h2>Your space, your apps</h2>
@@ -148,7 +148,7 @@ const description =
 
       <!-- Stage 4 : Configurability ───────────────────────────── -->
       <section class="stage stage--gray">
-        <div class="page-container stage-row stage-row--reversed">
+        <div class="page-container stage-row stage-row--reversed" data-reveal="slide-right">
           <div class="stage-copy">
             <span class="stage-number">04</span>
             <h2>Configurability when you need it</h2>
@@ -174,7 +174,7 @@ const description =
 
       <!-- Stage 1 : The push, behind the scenes ───────────────── -->
       <section class="stage stage--white">
-        <div class="page-container stage-row">
+        <div class="page-container stage-row" data-reveal="slide-left">
           <div class="stage-copy">
             <span class="stage-number">01</span>
             <h2>The push, behind the scenes</h2>
@@ -235,7 +235,7 @@ const description =
 
       <!-- Stage 2 : Native Kubernetes ─────────────────────────── -->
       <section class="stage stage--gray">
-        <div class="page-container stage-row stage-row--reversed">
+        <div class="page-container stage-row stage-row--reversed" data-reveal="slide-right">
           <div class="stage-copy">
             <span class="stage-number">02</span>
             <h2>Native Kubernetes, no lock-in surprises</h2>
@@ -296,7 +296,7 @@ const description =
 
       <!-- Stage 3 : Configured to fit your platform ───────────── -->
       <section class="stage stage--white">
-        <div class="page-container stage-row">
+        <div class="page-container stage-row" data-reveal="slide-left">
           <div class="stage-copy">
             <span class="stage-number">03</span>
             <h2>Configured to fit your platform</h2>
@@ -497,6 +497,7 @@ const description =
 
 
 <script>
+  import { replayReveal } from '../scripts/reveal.js';
   const btnDev  = document.getElementById('btn-developer') as HTMLButtonElement;
   const btnOp   = document.getElementById('btn-operator')  as HTMLButtonElement;
   const panelDev = document.getElementById('panel-developer') as HTMLElement;
@@ -520,6 +521,8 @@ const description =
       panelDev.setAttribute('hidden', '');
       headline.textContent = 'You Define How It Works';
     }
+
+    replayReveal(isDev ? panelDev : panelOp);
   }
 
   btnDev.addEventListener('click', () => activate('developer'));
