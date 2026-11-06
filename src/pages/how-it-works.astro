@@ -497,7 +497,7 @@ const description =
 
 
 <script>
-  import '../scripts/reveal.js';
+  import { replayReveal } from '../scripts/reveal.js';
   const btnDev  = document.getElementById('btn-developer') as HTMLButtonElement;
   const btnOp   = document.getElementById('btn-operator')  as HTMLButtonElement;
   const panelDev = document.getElementById('panel-developer') as HTMLElement;
@@ -521,6 +521,8 @@ const description =
       panelDev.setAttribute('hidden', '');
       headline.textContent = 'You Define How It Works';
     }
+
+    replayReveal(isDev ? panelDev : panelOp);
   }
 
   btnDev.addEventListener('click', () => activate('developer'));

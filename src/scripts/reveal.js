@@ -48,6 +48,7 @@ function initSlideLeft(el) {
   };
 
   stop = inView(el, run, { amount });
+  return () => stop();
 }
 
 function initSlideRight(el) {
@@ -77,6 +78,7 @@ function initSlideRight(el) {
   };
 
   stop = inView(el, run, { amount });
+  return () => stop();
 }
 
 function initScrollFade(el) {
@@ -105,7 +107,11 @@ function initScrollFade(el) {
   };
 
   stop = inView(el, run, { amount });
+  return () => stop();
 }
+
+// Observer cleanup per element, so replayReveal() can tear down and re-arm.
+const stops = new WeakMap();
 
 export function initReveal(root = document) {
   const els = root.querySelectorAll("[data-reveal]");
@@ -123,10 +129,25 @@ export function initReveal(root = document) {
     // state apply (see motion.css), so an element the user reaches before this
     // script has loaded is just visible, never stuck mid-animation.
     el.classList.add("reveal-pending");
-    if (el.dataset.reveal === "scroll-fade") initScrollFade(el);
-    else if (el.dataset.reveal === "slide-left") initSlideLeft(el);
-    else if (el.dataset.reveal === "slide-right") initSlideRight(el);
+    if (el.dataset.reveal === "scroll-fade") stops.set(el, initScrollFade(el));
+    else if (el.dataset.reveal === "slide-left") stops.set(el, initSlideLeft(el));
+    else if (el.dataset.reveal === "slide-right") stops.set(el, initSlideRight(el));
   });
+}
+
+// Reset every reveal under `root` to its hidden resting state and re-arm it,
+// so the animations play again (e.g. when a hidden tab panel is shown).
+export function replayReveal(root) {
+  root.querySelectorAll("[data-reveal]").forEach((el) => {
+    stops.get(el)?.();
+    stops.delete(el);
+    // Drop Motion's inline end state so the CSS resting state applies again.
+    el.style.opacity = "";
+    el.style.transform = "";
+    el.classList.remove("reveal-in");
+    delete el.dataset.revealInit;
+  });
+  initReveal(root);
 }
 
 if (!window.__revealInit) {
