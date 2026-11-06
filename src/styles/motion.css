@@ -1,0 +1,73 @@
+/*
+ * Shared motion tokens for scroll-into-view animations.
+ *
+ * Single source of truth for the values used by src/scripts/reveal.js and the
+ * nav sub-menu slide-down. Values mirror the motion.dev js-scroll-triggered
+ * example the design references.
+ *
+ * The resting (pre-animation) state is gated on `html.js` *and* `.reveal-pending`
+ * (added by reveal.js right as it starts observing an element) rather than on
+ * `[data-reveal]` alone. That way content is never hidden before the script that's
+ * responsible for un-hiding it has actually loaded and run, if JS is disabled,
+ * fails to load, or is just slow on a bad connection, the element simply stays
+ * visible instead of sitting in its off-screen/transparent resting state.
+ */
+
+:root {
+  /* slide-left: js-scroll-triggered ( x: -100 -> 0, 0.9s, cubic-bezier ) */
+  --motion-slide-duration: 0.9s;
+  --motion-slide-ease: cubic-bezier(0.17, 0.55, 0.55, 1);
+  --motion-slide-distance: 100px;
+
+  /* nav sub-menu slide-down (matches the 0.3s ease already on the chevron) */
+  --motion-submenu-duration: 0.3s;
+  --motion-submenu-ease: ease;
+}
+
+/*
+ * slide-right's resting `translateX(+distance)` below pushes real, scrollable
+ * overflow onto the page (unlike slide-left's negative offset, which browsers
+ * don't extend scrollable width for), clipping the sliding element itself only
+ * contains its own children, not its own transformed box relative to its parent.
+ * `body` alone isn't enough either: mobile browsers size the initial layout
+ * viewport from the widest descendant box regardless of an overflow-x:hidden
+ * lower in the tree, so `html` (the actual root) needs the clip too, or the
+ * viewport stays stretched, showing as dead space on the side, until that
+ * transform settles back to 0.
+ */
+html.js,
+html.js body {
+  /* clip, not hidden: hidden makes body a scroll container and breaks
+     position: sticky (e.g. the roadmap nav). */
+  overflow-x: clip;
+}
+
+/* Resting state, only applied when JS is available to run the reveal. */
+html.js [data-reveal="slide-left"],
+html.js [data-reveal="slide-right"] {
+  overflow-x: clip;
+}
+
+html.js [data-reveal="slide-left"].reveal-pending:not(.reveal-in) {
+  opacity: 0;
+  transform: translateX(calc(-1 * var(--motion-slide-distance)));
+  will-change: opacity, transform;
+}
+
+html.js [data-reveal="slide-right"].reveal-pending:not(.reveal-in) {
+  opacity: 0;
+  transform: translateX(var(--motion-slide-distance));
+  will-change: opacity, transform;
+}
+
+html.js [data-reveal="scroll-fade"].reveal-pending:not(.reveal-in) {
+  opacity: 0;
+  will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
