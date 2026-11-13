@@ -18,7 +18,6 @@ concurrency:
 
 env:
   APP_NAME: epinio-io-pr-${{ github.event.pull_request.number }}
-  EPINIO_NAMESPACE: ${{ vars.EPINIO_NAMESPACE || 'previews' }}
 
 jobs:
   check:
@@ -56,7 +55,7 @@ jobs:
           url: ${{ secrets.EPINIO_URL }}
           user: ${{ secrets.EPINIO_USER }}
           password: ${{ secrets.EPINIO_PASSWORD }}
-          namespace: ${{ env.EPINIO_NAMESPACE }}
+          namespace: ${{ secrets.EPINIO_NAMESPACE }}
 
       - name: Build and store image
         run: >-
