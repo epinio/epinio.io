@@ -84,7 +84,7 @@ jobs:
           url: ${{ secrets.EPINIO_URL }}
           user: ${{ secrets.EPINIO_USER }}
           password: ${{ secrets.EPINIO_PASSWORD }}
-          namespace: ${{ env.EPINIO_NAMESPACE }}
+          namespace: ${{ secrets.EPINIO_NAMESPACE }}
 
       - name: Deploy stored build
         run: epinio app deploy "$APP_NAME"
